@@ -1,0 +1,15 @@
+=== KICS Pulumi Summary ===
+Total findings: 6
+CRITICAL: 1
+HIGH: 2
+MEDIUM: 1
+LOW: 0
+INFO: 2
+
+Findings by query:
+- CRITICAL: RDS DB Instance Publicly Accessible (1 results)
+- HIGH: DynamoDB Table Not Encrypted (1 results)
+- HIGH: Passwords And Secrets - Generic Password (1 results)
+- MEDIUM: EC2 Instance Monitoring Disabled (1 results)
+- INFO: DynamoDB Table Point In Time Recovery Disabled (1 results)
+- INFO: EC2 Not EBS Optimized (1 results)
