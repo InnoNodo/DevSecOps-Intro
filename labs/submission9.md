@@ -3,76 +3,80 @@
 ## Task 1 - Runtime Security Detection with Falco
 
 ### Setup
+- Verified on branch `feature/lab9`
 - Helper container: `alpine:3.19`, started as `lab9-helper`
 - Falco image: `falcosecurity/falco:latest`
 - Runtime engine: modern eBPF
-- Custom rules path: `labs/lab9/falco/rules/custom-rules.yaml`
+- Custom rules file: `labs/lab9/falco/rules/custom-rules.yaml`
+- Log evidence: `labs/lab9/falco/logs/falco.log`
 
 ### Custom Falco Rule
-File: `labs/lab9/falco/rules/custom-rules.yaml`
+Rule file: `labs/lab9/falco/rules/custom-rules.yaml`
 
 Purpose:
-- Detect direct writes to `/usr/local/bin/` from inside any container.
-- This is a simple drift/compliance control because binaries or executable drop locations inside a container should not be modified during normal runtime.
+- Detect write activity under `/usr/local/bin/` from inside a container.
+- Treat runtime writes to a binary path as a high-signal drift/compliance event.
 
 When it should fire:
-- A container writes or creates a file under `/usr/local/bin/`
-- The open operation is a write (`evt.is_open_write=true`)
+- A container creates or overwrites a file below `/usr/local/bin/`
+- The operation is a write-capable open event
 
 When it should not fire:
-- Host-side writes
-- Container reads without write flags
+- Host-side activity
+- Read-only opens
 - Writes outside `/usr/local/bin/`
 
 ### Alerts Observed
 
-Baseline helper-container alert:
-- `Terminal shell in container`
-- Evidence from `labs/lab9/falco/logs/falco.log`:
+Baseline alert from the helper container:
+- Rule: `Terminal shell in container`
+- Trigger: `docker exec -it lab9-helper /bin/sh -lc 'echo hello-from-shell; sleep 1'`
 
 ```json
-{"rule":"Terminal shell in container","time":"2026-03-30T18:56:02.965015653Z","output":"Notice A shell was spawned in a container with an attached terminal | command=sh -lc echo tty-shell-trigger; sleep 1 container_name=lab9-helper"}
+{"rule":"Terminal shell in container","time":"2026-04-06T16:02:57.648777170Z","output":"Notice A shell was spawned in a container with an attached terminal | command=sh -lc echo hello-from-shell; sleep 1 container_name=lab9-helper"}
 ```
 
-Custom-rule alert:
-- `Write Binary Under UsrLocalBin`
-- Triggered by:
+Custom-rule alerts:
+- Rule: `Write Binary Under UsrLocalBin`
+- Triggers:
   - `echo boom > /usr/local/bin/drift.txt`
   - `echo custom-test > /usr/local/bin/custom-rule.txt`
 
 ```json
-{"rule":"Write Binary Under UsrLocalBin","time":"2026-03-30T18:55:15.156585848Z","output":"Warning Falco Custom: File write in /usr/local/bin (container=lab9-helper user=root file=/usr/local/bin/drift.txt ...)"}
-{"rule":"Write Binary Under UsrLocalBin","time":"2026-03-30T18:55:15.156527201Z","output":"Warning Falco Custom: File write in /usr/local/bin (container=lab9-helper user=root file=/usr/local/bin/custom-rule.txt ...)"}
+{"rule":"Write Binary Under UsrLocalBin","time":"2026-04-06T16:03:10.436779758Z","output":"Warning Falco Custom: File write in /usr/local/bin (container=lab9-helper user=root file=/usr/local/bin/custom-rule.txt flags=O_LARGEFILE|O_TRUNC|O_CREAT|O_WRONLY|O_F_CREATED|FD_UPPER_LAYER)"}
+{"rule":"Write Binary Under UsrLocalBin","time":"2026-04-06T16:03:10.436850893Z","output":"Warning Falco Custom: File write in /usr/local/bin (container=lab9-helper user=root file=/usr/local/bin/drift.txt flags=O_LARGEFILE|O_TRUNC|O_CREAT|O_WRONLY|O_F_CREATED|FD_UPPER_LAYER)"}
 ```
 
-Additional Falco verification from the event generator:
+Additional Falco verification from `falcosecurity/event-generator:latest`:
 - `Drop and execute new binary in container`
-- `Fileless execution via memfd_create`
+- `Execution from /dev/shm`
+- `Run shell untrusted`
 
-These showed that Falco was detecting more than just the custom helper-container activity.
+This confirmed the Falco deployment was detecting both the targeted helper-container activity and broader suspicious runtime behavior.
 
 ### Tuning / Noise Notes
-- On this WSL2 host, Falco started successfully with modern eBPF but logged TOCTOU mitigation attachment warnings for some tracepoints (`open`, `openat`, `openat2`, `creat`).
-- Detection still worked, but the built-in drift rule did not clearly appear in the captured output. The custom rule provided deterministic evidence for the `/usr/local/bin` write behavior required by the lab.
-- The custom rule is intentionally narrow to keep noise low. It only watches one high-signal path and excludes host events with `container.id != host`.
+- Falco started successfully with modern eBPF on WSL2.
+- Falco logged TOCTOU mitigation attachment warnings for `connect`, `creat`, `open`, `openat`, and `openat2`. Detection still worked, but those mitigations were not fully attached on this kernel.
+- The custom rule is intentionally narrow to reduce noise. It watches a single high-signal path and excludes host events with `container.id != host`.
+- The built-in shell rule fired reliably. For the file-write behavior, the custom rule provided deterministic evidence for container drift under `/usr/local/bin/`.
 
 ## Task 2 - Policy-as-Code with Conftest
 
 ### Kubernetes Manifest Comparison
-`juice-unhardened.yaml` is intentionally minimal and violates multiple security requirements:
+`juice-unhardened.yaml` is intentionally weak:
 - Uses `bkimminich/juice-shop:latest`
-- No `securityContext`
-- No resource requests/limits
-- No probes
+- No container `securityContext`
+- No CPU or memory requests/limits
+- No readiness or liveness probes
 
-`juice-hardened.yaml` fixes those gaps:
-- Pins the image to `bkimminich/juice-shop:v19.0.0`
-- Adds `runAsNonRoot: true`
-- Adds `allowPrivilegeEscalation: false`
-- Adds `readOnlyRootFilesystem: true`
-- Drops all Linux capabilities
-- Adds CPU and memory requests/limits
-- Adds readiness and liveness probes
+`juice-hardened.yaml` satisfies the hardening policy by:
+- Pinning the image to `bkimminich/juice-shop:v19.0.0`
+- Setting `runAsNonRoot: true`
+- Setting `allowPrivilegeEscalation: false`
+- Setting `readOnlyRootFilesystem: true`
+- Dropping all capabilities
+- Adding CPU and memory requests/limits
+- Adding readiness and liveness probes
 
 ### Conftest Results
 
@@ -80,18 +84,26 @@ Unhardened Kubernetes manifest:
 - Result: `30 tests, 20 passed, 2 warnings, 8 failures, 0 exceptions`
 - Evidence: `labs/lab9/analysis/conftest-unhardened.txt`
 
-Why each failure matters:
-- `:latest` tag: non-deterministic deployments and harder rollback/audit
-- Missing `runAsNonRoot`: increases impact if the process is compromised
-- Missing `allowPrivilegeEscalation: false`: allows gaining extra privileges through setuid/setgid or similar paths
-- Missing `readOnlyRootFilesystem`: makes runtime tampering and persistence easier
-- Missing resource requests/limits: weakens scheduling guarantees and enables noisy-neighbor or resource exhaustion issues
+Policy violations and why they matter:
+- `container "juice" uses disallowed :latest tag`
+  Non-deterministic deployments complicate rollback, auditing, and incident response.
+- `container "juice" must set runAsNonRoot: true`
+  Running as root increases blast radius after compromise.
+- `container "juice" must set allowPrivilegeEscalation: false`
+  Extra privilege paths remain available to the process.
+- `container "juice" must set readOnlyRootFilesystem: true`
+  Runtime tampering and persistence become easier.
+- `container "juice" missing resources.requests.cpu`
+- `container "juice" missing resources.requests.memory`
+- `container "juice" missing resources.limits.cpu`
+- `container "juice" missing resources.limits.memory`
+  Missing requests and limits weaken scheduling guarantees and allow avoidable resource abuse.
 
 Warnings on the unhardened manifest:
-- Missing `readinessProbe`
-- Missing `livenessProbe`
+- `container "juice" should define readinessProbe`
+- `container "juice" should define livenessProbe`
 
-These are warnings rather than denials because they affect resilience and safe rollout behavior more than direct privilege boundaries.
+These remain warnings because they affect resilience and safe rollout behavior more than direct privilege boundaries.
 
 Hardened Kubernetes manifest:
 - Result: `30 tests, 30 passed, 0 warnings, 0 failures, 0 exceptions`
@@ -106,7 +118,7 @@ Why the Compose file passes:
 - `read_only: true`
 - `cap_drop: ["ALL"]`
 - `security_opt: ["no-new-privileges:true"]`
-- `tmpfs: ["/tmp"]` provides a writable temp location without making the whole filesystem writable
+- `tmpfs: ["/tmp"]` keeps a writable temp area without making the full filesystem writable
 
 ## Files Produced
 - `labs/lab9/falco/rules/custom-rules.yaml`
