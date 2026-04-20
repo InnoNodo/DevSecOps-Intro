@@ -1,0 +1,6 @@
+2026/04/20 12:50:13 [warn] 37#37: *18 limiting requests, excess: 5.970 by zone "login", client: 192.168.64.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "localhost:8443"
+2026/04/20 12:50:13 [warn] 38#38: *19 limiting requests, excess: 5.959 by zone "login", client: 192.168.64.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "localhost:8443"
+2026/04/20 12:50:13 [warn] 39#39: *20 limiting requests, excess: 5.956 by zone "login", client: 192.168.64.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "localhost:8443"
+2026/04/20 12:50:13 [warn] 40#40: *21 limiting requests, excess: 5.954 by zone "login", client: 192.168.64.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "localhost:8443"
+2026/04/20 12:50:13 [warn] 41#41: *22 limiting requests, excess: 5.951 by zone "login", client: 192.168.64.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "localhost:8443"
+2026/04/20 12:50:13 [warn] 42#42: *23 limiting requests, excess: 5.949 by zone "login", client: 192.168.64.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "localhost:8443"
