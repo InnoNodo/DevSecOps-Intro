@@ -1,0 +1,18 @@
+=== TASK 1: Kata Installation ===
+Kata shim version:
+Kata Containers containerd shim (Golang): id: "io.containerd.kata.v2", version: 3.29.0, commit: 8dccf4cf37aeea4b6c2caacf3e61510d6eef2f71
+
+Kata installed at:
+-rwxr-xr-x 1 nodo nodo 67779008 Apr 22 22:10 /opt/kata/bin/containerd-shim-kata-v2
+
+Kata assets:
+cloud-hypervisor
+containerd-shim-kata-v2
+firecracker
+jailer
+kata-collect-data.sh
+kata-monitor
+kata-runtime
+qemu-system-x86_64
+qemu-system-x86_64-snp-experimental
+qemu-system-x86_64-tdx-experimental

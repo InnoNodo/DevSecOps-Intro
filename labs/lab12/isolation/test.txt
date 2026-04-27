@@ -1,0 +1,12 @@
+=== TASK 3: Isolation Tests ===
+Host /proc count:
+236
+
+Container /proc count:
+64
+
+Host modules:
+206
+
+Container modules:
+206
