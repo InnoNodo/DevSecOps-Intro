@@ -1,0 +1,19 @@
+=== TASK 4: Performance Test ===
+runc startup:
+test
+
+HTTP test (juice-shop):
+exited
+
+HTTP Latency (juice-shop running on Docker):
+0.003167
+0.002867
+0.005705
+0.003187
+0.003555
+0.002961
+0.002870
+0.002643
+0.003034
+0.002645
+avg: 0.001813s

@@ -1,0 +1,12 @@
+=== TASK 2: Run and Compare Containers ===
+Host kernel:
+6.6.87.2-microsoft-standard-WSL2
+
+Docker container (runc):
+Linux 26199c2e253b 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 Linux
+
+Docker container kernel:
+6.6.87.2-microsoft-standard-WSL2
+
+CPU info:
+model name	: AMD Ryzen 9 8945HX with Radeon Graphics

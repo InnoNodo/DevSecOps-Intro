@@ -1,0 +1,13 @@
+=== KICS Ansible Summary ===
+Total findings: 10
+CRITICAL: 0
+HIGH: 9
+MEDIUM: 0
+LOW: 1
+INFO: 0
+
+Findings by query:
+- HIGH: Passwords And Secrets - Generic Password (6 results)
+- HIGH: Passwords And Secrets - Generic Secret (1 results)
+- HIGH: Passwords And Secrets - Password in URL (2 results)
+- LOW: Unpinned Package Version (1 results)

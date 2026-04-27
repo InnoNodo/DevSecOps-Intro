@@ -1,0 +1,53 @@
+{
+  "date": "2026-04-13",
+  "product_type": "Engineering",
+  "product": "Juice Shop",
+  "engagement": "Labs Security Testing",
+  "imports": [
+    {
+      "scan_type": "ZAP Scan",
+      "source_file": "labs/lab5/zap/zap-report-noauth.xml",
+      "status": "imported",
+      "test_id": 9,
+      "findings_total": 13,
+      "active": 13,
+      "verified": 0
+    },
+    {
+      "scan_type": "Semgrep JSON Report",
+      "source_file": "labs/lab5/semgrep/semgrep-results.json",
+      "status": "imported",
+      "test_id": 5,
+      "findings_total": 8,
+      "active": 8,
+      "verified": 0
+    },
+    {
+      "scan_type": "Trivy Scan",
+      "source_file": "labs/lab4/trivy/trivy-vuln-detailed.json",
+      "status": "imported",
+      "test_id": 6,
+      "findings_total": 147,
+      "active": 147,
+      "verified": 143
+    },
+    {
+      "scan_type": "Nuclei Scan",
+      "source_file": "labs/lab5/nuclei/nuclei-results.json",
+      "status": "imported",
+      "test_id": 7,
+      "findings_total": 1,
+      "active": 1,
+      "verified": 0
+    },
+    {
+      "scan_type": "Anchore Grype",
+      "source_file": "labs/lab4/syft/grype-vuln-results.json",
+      "status": "imported",
+      "test_id": 8,
+      "findings_total": 122,
+      "active": 122,
+      "verified": 0
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "engagement_id": 4,
+  "engagement_name": "Labs Security Testing",
+  "total_findings": 291,
+  "active_findings": 291,
+  "verified_findings": 143,
+  "mitigated_findings": 0,
+  "severity_active": {
+    "Critical": 21,
+    "High": 150,
+    "Medium": 75,
+    "Low": 27,
+    "Info": 18
+  },
+  "open_closed_by_severity": {
+    "Critical|Open": 21,
+    "Critical|Closed": 0,
+    "High|Open": 150,
+    "High|Closed": 0,
+    "Medium|Open": 75,
+    "Medium|Closed": 0,
+    "Low|Open": 27,
+    "Low|Closed": 0,
+    "Info|Open": 18,
+    "Info|Closed": 0
+  },
+  "per_tool": {
+    "Anchore Grype": 122,
+    "Nuclei Scan": 1,
+    "Semgrep JSON Report": 8,
+    "Trivy Scan": 147,
+    "ZAP Scan": 13
+  },
+  "sla_breached": 0,
+  "sla_next_14_days": 21,
+  "top_cwe": [
+    {
+      "cwe": 1333,
+      "count": 29
+    },
+    {
+      "cwe": 407,
+      "count": 13
+    },
+    {
+      "cwe": 22,
+      "count": 11
+    },
+    {
+      "cwe": 20,
+      "count": 6
+    },
+    {
+      "cwe": 674,
+      "count": 6
+    },
+    {
+      "cwe": 1321,
+      "count": 6
+    },
+    {
+      "cwe": 400,
+      "count": 5
+    },
+    {
+      "cwe": 79,
+      "count": 4
+    },
+    {
+      "cwe": 248,
+      "count": 4
+    },
+    {
+      "cwe": 287,
+      "count": 4
+    }
+  ]
+}
