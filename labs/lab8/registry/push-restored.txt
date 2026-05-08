@@ -1,0 +1,60 @@
+The push refers to repository [localhost:5000/juice-shop]
+1e8da654b2e0: Preparing
+3cd50cf8b207: Preparing
+2f5239c7b2bf: Preparing
+c3abae442368: Preparing
+6819a1af097d: Preparing
+2401c5ea32a7: Preparing
+7095412417d2: Preparing
+2e4983c761ce: Preparing
+d5a3e014161b: Preparing
+bfe9137a1b04: Preparing
+f4aee9e53c42: Preparing
+1a73b54f556b: Preparing
+2a92d6ac9e4f: Preparing
+bbb6cacb8c82: Preparing
+6f1cdceb6a31: Preparing
+af5aa97ebe6c: Preparing
+4d049f83d9cf: Preparing
+114dde0fefeb: Preparing
+48c0fb67386e: Preparing
+8fa10c0194df: Preparing
+f464af4b9b25: Preparing
+bbb6cacb8c82: Waiting
+6f1cdceb6a31: Waiting
+af5aa97ebe6c: Waiting
+4d049f83d9cf: Waiting
+7095412417d2: Waiting
+114dde0fefeb: Waiting
+48c0fb67386e: Waiting
+2e4983c761ce: Waiting
+8fa10c0194df: Waiting
+d5a3e014161b: Waiting
+f464af4b9b25: Waiting
+bfe9137a1b04: Waiting
+f4aee9e53c42: Waiting
+1a73b54f556b: Waiting
+2a92d6ac9e4f: Waiting
+2401c5ea32a7: Waiting
+c3abae442368: Layer already exists
+1e8da654b2e0: Layer already exists
+3cd50cf8b207: Layer already exists
+2f5239c7b2bf: Layer already exists
+6819a1af097d: Layer already exists
+d5a3e014161b: Layer already exists
+2401c5ea32a7: Layer already exists
+2e4983c761ce: Layer already exists
+bfe9137a1b04: Layer already exists
+7095412417d2: Layer already exists
+bbb6cacb8c82: Layer already exists
+2a92d6ac9e4f: Layer already exists
+f4aee9e53c42: Layer already exists
+6f1cdceb6a31: Layer already exists
+1a73b54f556b: Layer already exists
+af5aa97ebe6c: Layer already exists
+114dde0fefeb: Layer already exists
+48c0fb67386e: Layer already exists
+4d049f83d9cf: Layer already exists
+8fa10c0194df: Layer already exists
+f464af4b9b25: Layer already exists
+v19.0.0: digest: sha256:b029fa83327aa8a3bbcaf161af6269c18c80134942437cb90794233502554e48 size: 4702

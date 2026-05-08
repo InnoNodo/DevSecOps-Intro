@@ -1,0 +1,4 @@
+Using payload from: labs/lab8/attest/provenance.json
+Signing artifact...
+Error: signing localhost:5000/juice-shop@sha256:b029fa83327aa8a3bbcaf161af6269c18c80134942437cb90794233502554e48: Get "https://localhost:5000/v2/": dial tcp 127.0.0.1:5000: i/o timeout; Get "http://localhost:5000/v2/": dial tcp 127.0.0.1:5000: i/o timeout
+error during command execution: signing localhost:5000/juice-shop@sha256:b029fa83327aa8a3bbcaf161af6269c18c80134942437cb90794233502554e48: Get "https://localhost:5000/v2/": dial tcp 127.0.0.1:5000: i/o timeout; Get "http://localhost:5000/v2/": dial tcp 127.0.0.1:5000: i/o timeout

@@ -1,0 +1,2 @@
+[0008] ERROR failed to fetch latest version: Get "https://toolbox-data.anchore.io/syft/releases/latest/VERSION": read tcp 172.17.0.2:59250->8.6.112.0:443: read: connection reset by peer
+syft_exit=0

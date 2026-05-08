@@ -1,0 +1,4 @@
+signing/cosign.key
+attest/juice-shop.cdx.json
+attest/syft-convert.log
+artifacts/juice-shop-image.tar
