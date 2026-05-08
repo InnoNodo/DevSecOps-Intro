@@ -1,0 +1,44 @@
+rules:
+  - id: juice-shop-md5-hash
+    languages: [typescript, javascript]
+    severity: WARNING
+    message: Insecure MD5 hashing detected.
+    metadata:
+      category: security
+      cwe: "CWE-327: Use of a Broken or Risky Cryptographic Algorithm"
+      confidence: MEDIUM
+    pattern: crypto.createHash('md5')
+
+  - id: juice-shop-sql-string-interpolation
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: Raw SQL query built from string interpolation can enable SQL injection.
+    metadata:
+      category: security
+      cwe: "CWE-89: Improper Neutralization of Special Elements used in an SQL Command"
+      confidence: HIGH
+    patterns:
+      - pattern: $DB.query(`...${...}...`)
+      - metavariable-regex:
+          metavariable: $DB
+          regex: .*(sequelize|Sequelize).*
+
+  - id: juice-shop-eval
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: Use of eval on dynamic input is dangerous.
+    metadata:
+      category: security
+      cwe: "CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code"
+      confidence: HIGH
+    pattern: eval(...)
+
+  - id: juice-shop-open-redirect
+    languages: [typescript, javascript]
+    severity: WARNING
+    message: Redirecting to a user-controlled URL can enable open redirect attacks.
+    metadata:
+      category: security
+      cwe: "CWE-601: URL Redirection to Untrusted Site"
+      confidence: MEDIUM
+    pattern: res.redirect($URL)

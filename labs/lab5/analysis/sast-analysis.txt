@@ -1,0 +1,3 @@
+SAST Analysis Report
+Semgrep findings: 8
+Critical patterns: SQL injection, eval, MD5, open redirect

