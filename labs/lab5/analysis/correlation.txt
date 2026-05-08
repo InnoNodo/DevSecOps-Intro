@@ -1,0 +1,8 @@
+SAST/DAST Correlation Report
+Semgrep findings: 8
+ZAP noauth alert rules: 13
+ZAP auth alert rules: 11
+Nuclei matches: 1
+Nikto items: 84
+SQLmap confirmed injection points: 2
+Key correlation: Semgrep SQL injection in routes/search.ts was confirmed by SQLmap against /rest/products/search.
