@@ -1,0 +1,1 @@
+SNYK_TOKEN is not set in this environment. Snyk scan was not executed to avoid sending credentials or scan metadata to an external service without explicit token approval.

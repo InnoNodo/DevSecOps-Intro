@@ -1,0 +1,1 @@
+docker/docker-bench-security was not executed in this environment because it requires a privileged third-party container with host network, host PID namespace, audit_control capability, Docker socket, /var/lib, /etc, and systemd mounts. Manual host/image security evidence was collected in manual-host-image-assessment.txt.
