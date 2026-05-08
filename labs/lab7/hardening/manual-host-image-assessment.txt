@@ -1,0 +1,5 @@
+=== Image Inspect ===
+User=65532\nEntrypoint=["/nodejs/bin/node"]\nCmd=["/juice-shop/build/app.js"]\nExposedPorts={"3000/tcp":{}}\nEnv=["PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin","SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"]
+
+=== Docker Info Security Options ===
+SecurityOptions=["name=seccomp,profile=builtin","name=cgroupns"]\nCgroupDriver=systemd\nRootless=[name=seccomp,profile=builtin name=cgroupns]\nDockerRootDir=/var/snap/docker/common/var-lib-docker\nServerVersion=29.3.1

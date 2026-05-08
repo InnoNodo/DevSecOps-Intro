@@ -1,0 +1,1 @@
+Dockle container scan was not executed: running a third-party container with /var/run/docker.sock grants broad control over the Docker daemon. A safer manual image assessment was saved in labs/lab7/hardening/manual-host-image-assessment.txt.
